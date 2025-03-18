@@ -20,8 +20,7 @@ A website designed to help farmers by providing useful information about crops, 
 ### 🌍 **About QEO**  
 **Quantum Enterprise Optimizer (QEO)** is a **cutting-edge AI and quantum-powered workflow optimization platform** built for enterprises. It integrates quantum computing, AI insights, and enterprise-grade optimization to **enhance project management, resource allocation, and risk identification**.  
 
-🔗 **Live Website**: [QEO Live Demo](https://infosys-quantum-workflow-optimizer-cloud-9.replit.app/)  
-🐙 **GitHub Repo**: [Final QEO Repository](https://github.com/Mushfiqul-Alam-17/Final-QEO.git)
+
 
 ### ⚡ **Key Features**  
 - **Quantum-Powered Optimization**: Uses **QUBO (Quadratic Unconstrained Binary Optimization)** via **IBM Qiskit**.  
