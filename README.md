@@ -39,8 +39,6 @@ A website designed to help farmers by providing useful information about crops, 
 
 ### 🛠 **Installation Guide**  
 ```sh
-git clone https://github.com/Mushfiqul-Alam-17/Final-QEO.git
-cd Final-QEO
 pip install -r requirements.txt
 export OPENAI_API_KEY="your_openai_key"
 export IBM_QUANTUM_TOKEN="your_ibm_token"
