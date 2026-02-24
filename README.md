@@ -1,7 +1,7 @@
 <div align="center">
 
 <!-- ANIMATED HEADER BANNER -->
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f0c29,50:302b63,100:24243e&height=220&section=header&text=Shivansh%20Srivastava&fontSize=55&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=Building%20the%20future%2C%20one%20commit%20at%20a%20time%20🚀&descAlignY=60&descSize=18" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=venom&color=0:0f0c29,50:302b63,100:24243e&height=250&section=header&text=Shivansh%20Srivastava&fontSize=55&fontColor=ffffff&animation=fadeIn&fontAlignY=45&desc=🚀%20Building%20the%20future%2C%20one%20commit%20at%20a%20time&descAlignY=62&descSize=18&stroke=A855F7&strokeWidth=2" width="100%"/>
 
 <!-- TYPING ANIMATION -->
 <a href="https://github.com/shivansh01-24">
@@ -161,6 +161,12 @@ class Shivansh:
 <br/>
 
 <img src="https://github-readme-streak-stats.herokuapp.com/?user=shivansh01-24&theme=tokyonight&hide_border=true&background=0d1117&ring=A855F7&fire=FF6B6B&currStreakLabel=A855F7" width="500"/>
+
+---
+
+## 🏆 GitHub Trophies
+
+<img src="https://github-profile-trophy.vercel.app/?username=shivansh01-24&theme=tokyonight&no-frame=true&no-bg=true&margin-w=6&row=1&column=7" width="100%"/>
 
 ---
 
