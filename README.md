@@ -102,23 +102,6 @@ class Shivansh:
 
 </div>
 
-### ⚛️ Quantum Enterprise Optimizer (QEO) &nbsp;[![GitHub](https://img.shields.io/badge/Repo-181717?style=flat&logo=github)](https://github.com/shivansh01-24)
-
-> **Cutting-edge AI + Quantum-powered workflow optimization platform for enterprises**
-
-<div align="center">
-<img src="https://img.shields.io/badge/Quantum-QUBO%20Optimization-6929C4?style=for-the-badge&logo=ibm"/>
-<img src="https://img.shields.io/badge/AI-GPT%20Insights-412991?style=for-the-badge&logo=openai"/>
-<img src="https://img.shields.io/badge/Backend-Flask%20%2B%20Gunicorn-000000?style=for-the-badge&logo=flask"/>
-</div>
-
-- ⚡ **Quantum-Powered Optimization** via IBM Qiskit QUBO algorithms
-- 🧠 **AI Insights Engine** using OpenAI GPT models for smart recommendations
-- 📊 **Enterprise Resource Allocation** — balances budget, time & skill sets
-- 🔬 **Quantum Circuit Playground** — design and simulate circuits live
-- 📈 **Dynamic Visualizations** — real-time graphs, quantum animations, efficiency metrics
-
----
 
 ### 🤖 AI Performance Analyzer &nbsp;[![GitHub](https://img.shields.io/badge/Repo-181717?style=flat&logo=github)](https://github.com/shivansh01-24/AI-Performance-Analyzer)
 
@@ -166,7 +149,7 @@ class Shivansh:
 
 ## 🏆 GitHub Trophies
 
-<img src="https://github-profile-trophy.vercel.app/?username=shivansh01-24&theme=tokyonight&no-frame=true&no-bg=true&margin-w=6&row=1&column=7" width="100%"/>
+<img src="https://github-profile-trophy.vercel.app/?username=shivansh01-24&theme=tokyonight&no-frame=true&no-bg=true&margin-w=4&margin-h=4&column=6" width="100%"/>
 
 ---
 
