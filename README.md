@@ -66,7 +66,7 @@
 class Shivansh:
     name       = "Shivansh Srivastava"
     degree     = "B.Tech in Computer Science & Engineering"
-    passion    = ["AI","Web Development",Software Devlopment,Vibe Coding]
+    passion    = ["AI","Web Development","Software Devlopment","Vibe Coding"]
     languages  = ["Python", "Java", "C++", "JavaScript", "HTML/CSS"]
     superpower = "Turning coffee ☕ into code 💻"
     motto      = "Build things that matter."
