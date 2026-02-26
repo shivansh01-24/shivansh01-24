@@ -66,7 +66,7 @@
 class Shivansh:
     name       = "Shivansh Srivastava"
     degree     = "B.Tech in Computer Science & Engineering"
-    passion    = ["AI", "Quantum Computing", "Web Development"]
+    passion    = ["AI","Web Development",Software Devlopment,Vibe Coding]
     languages  = ["Python", "Java", "C++", "JavaScript", "HTML/CSS"]
     superpower = "Turning coffee ☕ into code 💻"
     motto      = "Build things that matter."
@@ -144,12 +144,6 @@ class Shivansh:
 <br/>
 
 <img src="https://github-readme-streak-stats.herokuapp.com/?user=shivansh01-24&theme=tokyonight&hide_border=true&background=0d1117&ring=A855F7&fire=FF6B6B&currStreakLabel=A855F7" width="500"/>
-
----
-
-## 🏆 GitHub Trophies
-
-<img src="https://github-profile-trophy.vercel.app/?username=shivansh01-24&theme=tokyonight&no-frame=true&no-bg=true&margin-w=4&margin-h=4&column=6" width="100%"/>
 
 ---
 
