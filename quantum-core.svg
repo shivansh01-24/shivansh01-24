@@ -283,68 +283,32 @@
 
   <!-- Layer 3: Laser Constellation Beams -->
   
-  <!-- Laser Constellation Streams Layer -->
+  <!-- Mountain Summit Ridge Constellation Layer -->
   <g id="lasers-layer">
     
-    <!-- Plasma Laser Stream to TypeScript -->
+    <!-- Mountain Summit Ridge Constellation Link: TypeScript -->
     <g class="laser-stream">
-      <path d="M 450 250 Q 490 185 530 170" fill="none" stroke="url(#laser-grad)" stroke-width="1.8" stroke-dasharray="10 20" stroke-opacity="0.85" filter="url(#glow-subtle)">
-        <animate attributeName="stroke-dashoffset" from="30" to="0" dur="1.8s" repeatCount="indefinite" />
+      <path d="M 530 170 Q 585 175 640 210" fill="none" stroke="url(#gold-accent)" stroke-width="1.2" stroke-dasharray="4 8" stroke-opacity="0.6" filter="url(#glow-subtle)">
+        <animate attributeName="stroke-dashoffset" from="24" to="0" dur="2s" repeatCount="indefinite" />
       </path>
-
-      <!-- Contact Energy Spark Node at Satellite Interface -->
-      <circle cx="530" cy="170" r="3.5" fill="#3178c6" filter="url(#quantum-glow)">
-        <animate attributeName="r" values="3;5.5;3" dur="1.2s" repeatCount="indefinite" />
-        <animate attributeName="fill-opacity" values="0.7;1.0;0.7" dur="1.2s" repeatCount="indefinite" />
-      </circle>
     </g>
-    <!-- Plasma Laser Stream to Rust -->
+    <!-- Mountain Summit Ridge Constellation Link: Rust -->
     <g class="laser-stream">
-      <path d="M 450 250 Q 545 255 640 210" fill="none" stroke="url(#laser-grad)" stroke-width="1.8" stroke-dasharray="10 20" stroke-opacity="0.85" filter="url(#glow-subtle)">
-        <animate attributeName="stroke-dashoffset" from="30" to="0" dur="2.2s" repeatCount="indefinite" />
+      <path d="M 640 210 Q 550 205 460 230" fill="none" stroke="url(#gold-accent)" stroke-width="1.2" stroke-dasharray="4 8" stroke-opacity="0.6" filter="url(#glow-subtle)">
+        <animate attributeName="stroke-dashoffset" from="24" to="0" dur="2.4s" repeatCount="indefinite" />
       </path>
-
-      <!-- Contact Energy Spark Node at Satellite Interface -->
-      <circle cx="640" cy="210" r="3.5" fill="#dea584" filter="url(#quantum-glow)">
-        <animate attributeName="r" values="3;5.5;3" dur="1.2s" repeatCount="indefinite" />
-        <animate attributeName="fill-opacity" values="0.7;1.0;0.7" dur="1.2s" repeatCount="indefinite" />
-      </circle>
     </g>
-    <!-- Plasma Laser Stream to Python -->
+    <!-- Mountain Summit Ridge Constellation Link: Python -->
     <g class="laser-stream">
-      <path d="M 450 250 Q 455 215 460 230" fill="none" stroke="url(#laser-grad)" stroke-width="1.8" stroke-dasharray="10 20" stroke-opacity="0.85" filter="url(#glow-subtle)">
-        <animate attributeName="stroke-dashoffset" from="30" to="0" dur="2.6s" repeatCount="indefinite" />
+      <path d="M 460 230 Q 400 230 340 260" fill="none" stroke="url(#gold-accent)" stroke-width="1.2" stroke-dasharray="4 8" stroke-opacity="0.6" filter="url(#glow-subtle)">
+        <animate attributeName="stroke-dashoffset" from="24" to="0" dur="2.8s" repeatCount="indefinite" />
       </path>
-
-      <!-- Contact Energy Spark Node at Satellite Interface -->
-      <circle cx="460" cy="230" r="3.5" fill="#3572A5" filter="url(#quantum-glow)">
-        <animate attributeName="r" values="3;5.5;3" dur="1.2s" repeatCount="indefinite" />
-        <animate attributeName="fill-opacity" values="0.7;1.0;0.7" dur="1.2s" repeatCount="indefinite" />
-      </circle>
     </g>
-    <!-- Plasma Laser Stream to Go -->
+    <!-- Mountain Summit Ridge Constellation Link: Go -->
     <g class="laser-stream">
-      <path d="M 450 250 Q 395 280 340 260" fill="none" stroke="url(#laser-grad)" stroke-width="1.8" stroke-dasharray="10 20" stroke-opacity="0.85" filter="url(#glow-subtle)">
-        <animate attributeName="stroke-dashoffset" from="30" to="0" dur="1.8s" repeatCount="indefinite" />
+      <path d="M 340 260 Q 425 260 510 290" fill="none" stroke="url(#gold-accent)" stroke-width="1.2" stroke-dasharray="4 8" stroke-opacity="0.6" filter="url(#glow-subtle)">
+        <animate attributeName="stroke-dashoffset" from="24" to="0" dur="3.2s" repeatCount="indefinite" />
       </path>
-
-      <!-- Contact Energy Spark Node at Satellite Interface -->
-      <circle cx="340" cy="260" r="3.5" fill="#00ADD8" filter="url(#quantum-glow)">
-        <animate attributeName="r" values="3;5.5;3" dur="1.2s" repeatCount="indefinite" />
-        <animate attributeName="fill-opacity" values="0.7;1.0;0.7" dur="1.2s" repeatCount="indefinite" />
-      </circle>
-    </g>
-    <!-- Plasma Laser Stream to CSS -->
-    <g class="laser-stream">
-      <path d="M 450 250 Q 480 245 510 290" fill="none" stroke="url(#laser-grad)" stroke-width="1.8" stroke-dasharray="10 20" stroke-opacity="0.85" filter="url(#glow-subtle)">
-        <animate attributeName="stroke-dashoffset" from="30" to="0" dur="2.2s" repeatCount="indefinite" />
-      </path>
-
-      <!-- Contact Energy Spark Node at Satellite Interface -->
-      <circle cx="510" cy="290" r="3.5" fill="#563d7c" filter="url(#quantum-glow)">
-        <animate attributeName="r" values="3;5.5;3" dur="1.2s" repeatCount="indefinite" />
-        <animate attributeName="fill-opacity" values="0.7;1.0;0.7" dur="1.2s" repeatCount="indefinite" />
-      </circle>
     </g>
   </g>
 
