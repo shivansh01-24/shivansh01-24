@@ -183,5 +183,6 @@ class Shivansh:
 <!-- PROFILE VIEWS -->
 ![Profile Views](https://komarev.com/ghpvc/?username=shivansh01-24&color=A855F7&style=for-the-badge&label=Profile+Views)
 <img src="https://raw.githubusercontent.com/shivansh01-24/shivansh01-24/main/quantum-core.svg" width="100%" />
+<img src="https://raw.githubusercontent.com/shivansh01-24/shivansh01-24/main/quantum-core.svg?v=2" width="100%" />
 
 </div>
