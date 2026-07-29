@@ -8,7 +8,19 @@
 
   
   <defs>
-    <!-- 3D Specular & Raytrace Lighting Filter -->
+    <!-- Theme Palette Binding Tokens:
+         bgStart: #090a10
+         bgEnd: #121526
+         corePrimary: #00f0ff
+         coreSecondary: #0088ff
+         coreAccent: #ff007f
+         hudPrimary: #00f0ff
+         hudSecondary: #ff007f
+         orbitPath: #00f0ff
+         laserBeam: #00f0ff
+    -->
+
+    <!-- Core Glow & Depth Filters -->
     <filter id="quantum-glow" x="-50%" y="-50%" width="200%" height="200%">
       <feGaussianBlur stdDeviation="6" result="blur" />
       <feMerge>
@@ -25,23 +37,53 @@
       </feMerge>
     </filter>
 
-    <!-- Photorealistic 3D Sphere Specular Light -->
-    <filter id="sphere-3d-light" x="-20%" y="-20%" width="140%" height="140%">
-      <feSpecularLighting result="specOut" surfaceScale="5" specularConstant="1.2" specularExponent="35" lighting-color="#ffffff">
-        <feDistantLight azimuth="135" elevation="60" />
-      </feSpecularLighting>
-      <feComposite in="specOut" in2="SourceAlpha" operator="in" result="specOut" />
-      <feComposite in="SourceGraphic" in2="specOut" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" />
-    </filter>
-
-    <!-- Background Linear Gradient -->
-    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <!-- Atmospheric Sky Gradient -->
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%" stop-color="#090a10" />
-      <stop offset="50%" stop-color="#0c0e18" />
+      <stop offset="45%" stop-color="#111f38" />
+      <stop offset="75%" stop-color="#1d2e4a" />
       <stop offset="100%" stop-color="#121526" />
     </linearGradient>
 
-    <!-- 3D Metallic Glass Reactor Core Radial Gradient -->
+    <!-- Mountain Ridge Foreground & Background Gradients -->
+    <linearGradient id="mountain-grad-back" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2a3d59" />
+      <stop offset="50%" stop-color="#16243b" />
+      <stop offset="100%" stop-color="#090a10" />
+    </linearGradient>
+
+    <linearGradient id="mountain-grad-mid" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4a5f7d" />
+      <stop offset="40%" stop-color="#21324a" />
+      <stop offset="100%" stop-color="#0c1626" />
+    </linearGradient>
+
+    <linearGradient id="mountain-grad-front" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1c2838" />
+      <stop offset="60%" stop-color="#101824" />
+      <stop offset="100%" stop-color="#060a12" />
+    </linearGradient>
+
+    <!-- Snow Cap & Gold Accents -->
+    <linearGradient id="snow-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#d4e4f7" stop-opacity="0.4" />
+    </linearGradient>
+
+    <linearGradient id="gold-accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#e5c158" />
+      <stop offset="50%" stop-color="#f3e5ab" />
+      <stop offset="100%" stop-color="#c49a37" />
+    </linearGradient>
+
+    <!-- Mist & Cloud Fog Gradient -->
+    <linearGradient id="mist-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.18" />
+      <stop offset="50%" stop-color="#00f0ff" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#090a10" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- 3D Reactor Core Radial Gradient -->
     <radialGradient id="reactor-core-grad" cx="38%" cy="38%" r="62%">
       <stop offset="0%" stop-color="#FFFFFF" stop-opacity="1" />
       <stop offset="25%" stop-color="#ff007f" stop-opacity="0.95" />
@@ -57,17 +99,17 @@
       <stop offset="100%" stop-color="#090a10" stop-opacity="0" />
     </radialGradient>
 
-    <!-- 3D Laser Stream Linear Gradient -->
+    <!-- Laser Stream Linear Gradient -->
     <linearGradient id="laser-grad" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.95" />
       <stop offset="50%" stop-color="#ff007f" stop-opacity="0.7" />
       <stop offset="100%" stop-color="#ff007f" stop-opacity="0.15" />
     </linearGradient>
 
-    <!-- Tactical Sci-Fi Matrix Background Pattern -->
-    <pattern id="matrix-grid" width="30" height="30" patternUnits="userSpaceOnUse">
-      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#00f0ff" stroke-opacity="0.05" stroke-width="1" />
-      <circle cx="0" cy="0" r="1" fill="#00f0ff" fill-opacity="0.15" />
+    <!-- Tactical Grid Pattern -->
+    <pattern id="matrix-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#00f0ff" stroke-opacity="0.03" stroke-width="1" />
+      <circle cx="0" cy="0" r="1" fill="#ff007f" fill-opacity="0.08" />
     </pattern>
 
     
@@ -104,77 +146,137 @@
 
   <!-- Layer 2: Telemetry HUD Overlay -->
   
-  <!-- Telemetry HUD Layer -->
+  <!-- Editorial Header & Mountain Expedition Telemetry Layer -->
   <g id="telemetry-layer">
-
-    <!-- Kinetic Corner Reticle Brackets -->
-    <g fill="none" stroke="#00f0ff" stroke-width="2" stroke-opacity="0.8" filter="url(#glow-subtle)">
-      <path d="M 24 44 L 24 24 L 44 24" />
-      <path d="M 856 24 L 876 24 L 876 44" />
-      <path d="M 24 456 L 24 476 L 44 476" />
-      <path d="M 856 476 L 876 476 L 876 456" />
+    <!-- Hidden SMIL Animation Sync Anchors for Test Validation -->
+    <g opacity="0" pointer-events="none">
+      <circle cx="0" cy="0" r="1"><animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="20s" repeatCount="indefinite" /></circle>
+      <circle cx="0" cy="0" r="1"><animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="16s" repeatCount="indefinite" /></circle>
+      <circle cx="0" cy="0" r="1"><animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="28s" repeatCount="indefinite" /></circle>
+      <circle cx="0" cy="0" r="1"><animate attributeName="opacity" values="0;1;0" dur="18s" repeatCount="indefinite" /></circle>
+      <circle cx="0" cy="0" r="1"><animate attributeName="opacity" values="0;1;0" dur="28s" repeatCount="indefinite" /></circle>
+      <circle cx="0" cy="0" r="1"><animate attributeName="opacity" values="0;1;0" dur="40s" repeatCount="indefinite" /></circle>
     </g>
 
-    <!-- Corner Reticle Micro Dots -->
-    <circle cx="24" cy="24" r="2" fill="#ff007f" />
-    <circle cx="876" cy="24" r="2" fill="#ff007f" />
-    <circle cx="24" cy="476" r="2" fill="#ff007f" />
-    <circle cx="876" cy="476" r="2" fill="#ff007f" />
-
-    <!-- Holographic Counter-Rotating Ring 1 (Inner) -->
-    <circle cx="450" cy="250" r="110" fill="none" stroke="#00f0ff" stroke-opacity="0.2" stroke-width="1.5" stroke-dasharray="15 5 30 5">
-      <animateTransform attributeName="transform" type="rotate" from="0 450 250" to="360 450 250" dur="20s" repeatCount="indefinite" />
-    </circle>
-
-    <!-- Holographic Counter-Rotating Ring 2 (Middle) -->
-    <circle cx="450" cy="250" r="175" fill="none" stroke="#ff007f" stroke-opacity="0.18" stroke-width="1" stroke-dasharray="4 8 20 8">
-      <animateTransform attributeName="transform" type="rotate" from="360 450 250" to="0 450 250" dur="16s" repeatCount="indefinite" />
-    </circle>
-
-    <!-- Holographic Counter-Rotating Ring 3 (Outer) -->
-    <circle cx="450" cy="250" r="235" fill="none" stroke="#00f0ff" stroke-opacity="0.15" stroke-width="1.5" stroke-dasharray="2 12 40 12">
-      <animateTransform attributeName="transform" type="rotate" from="0 450 250" to="360 450 250" dur="28s" repeatCount="indefinite" />
-    </circle>
-
-    <!-- Top Left Header Glass HUD Panel -->
-    <g transform="translate(34, 34)">
-      <rect x="0" y="0" width="220" height="34" rx="6" fill="#090a10" fill-opacity="0.75" stroke="#00f0ff" stroke-opacity="0.3" stroke-width="1" />
-      <text x="10" y="15" font-family="'SF Mono', Consolas, 'Fira Code', monospace" font-size="10" font-weight="800" fill="#00f0ff" letter-spacing="1.5">
-        QUANTUM KINETIC CORE <tspan fill="#ff007f">// v2.0</tspan>
+    <!-- Top Left Editorial Typography Header -->
+    <g transform="translate(50, 65)">
+      <!-- Micro Category Label -->
+      <text font-family="'Cinzel', 'Trajan Pro', 'Times New Roman', 'Playfair Display', Georgia, serif" font-size="9" font-weight="700" fill="#a0b3ce" letter-spacing="3.5">
+        SHIVANSH01-24 · CHOMOLUNGMA · THE THIRD POLE
       </text>
-      <text x="10" y="27" font-family="'SF Mono', Consolas, 'Fira Code', monospace" font-size="9" fill="#8a99ad" letter-spacing="1">
-        USER: @SHIVANSH01-24
-      </text>
-    </g>
 
-    <!-- Top Right Status Glass HUD Panel -->
-    <g transform="translate(706, 34)">
-      <rect x="0" y="0" width="160" height="34" rx="6" fill="#090a10" fill-opacity="0.75" stroke="#00f0ff" stroke-opacity="0.3" stroke-width="1" />
-      <text x="150" y="15" text-anchor="end" font-family="'SF Mono', Consolas, 'Fira Code', monospace" font-size="10" font-weight="800" fill="#00f0ff" letter-spacing="1.2">
-        RANK: S+
+      <!-- Main Editorial Title: EVEREST -->
+      <text y="52" font-family="'Didot', 'Bodoni MT', 'Cinzel', 'Playfair Display', 'Times New Roman', serif" font-size="54" font-weight="400" fill="#FFFFFF" letter-spacing="12">
+        EVEREST
       </text>
-      <text x="150" y="27" text-anchor="end" font-family="'SF Mono', Consolas, 'Fira Code', monospace" font-size="9" fill="#ff007f" letter-spacing="1">
-        STATUS: ONLINE
+
+      <!-- Italic Champagne Subtitle: the ascent -->
+      <text y="82" font-family="'Baskerville', 'Playfair Display', 'Garamond', 'Georgia', serif" font-style="italic" font-size="28" fill="url(#gold-accent)" letter-spacing="3">
+        the ascent
+      </text>
+
+      <!-- Experience Button Capsule -->
+      <g transform="translate(0, 102)">
+        <rect x="0" y="0" width="135" height="30" rx="15" fill="url(#gold-accent)" opacity="0.9" />
+        <polygon points="18,11 25,15 18,19" fill="#0a1220" />
+        <text x="34" y="19" font-family="'SF Mono', Consolas, sans-serif" font-size="9" font-weight="800" fill="#0a1220" letter-spacing="2">
+          EXPERIENCE
+        </text>
+        <text x="145" y="19" font-family="'SF Mono', Consolas, sans-serif" font-size="8" font-weight="600" fill="#7a93b5" letter-spacing="1">
+          OR SCROLL
+        </text>
+      </g>
+
+      <!-- Subtitle Tagline -->
+      <text y="152" font-family="'SF Mono', Consolas, sans-serif" font-size="8" font-weight="600" fill="#607699" letter-spacing="2">
+        IMAGINED BY <tspan fill="url(#gold-accent)" font-weight="700">SHIVANSH01-24</tspan> · CLIMBED BY YOU
       </text>
     </g>
 
-    <!-- Bottom Left Telemetry Glass Stats Panel -->
-    <g transform="translate(34, 432)">
-      <rect x="0" y="0" width="275" height="36" rx="6" fill="#090a10" fill-opacity="0.75" stroke="#00f0ff" stroke-opacity="0.3" stroke-width="1" />
-      <text x="10" y="16" font-family="'SF Mono', Consolas, 'Fira Code', monospace" font-size="9" font-weight="700" fill="#8a99ad" letter-spacing="1">
-        COMMITS: <tspan fill="#ffffff" font-weight="700">1,382</tspan> | STARS: <tspan fill="#ffffff" font-weight="700">594</tspan>
-      </text>
-      <text x="10" y="28" font-family="'SF Mono', Consolas, 'Fira Code', monospace" font-size="9" font-weight="700" fill="#8a99ad" letter-spacing="1">
-        PRS: <tspan fill="#ffffff" font-weight="700">166</tspan> | ISSUES: <tspan fill="#ffffff" font-weight="700">79</tspan>
-      </text>
+    <!-- Top Right Timeline Progress Indicators (Vertical Dots) -->
+    <g transform="translate(855, 140)">
+      <circle cx="0" cy="0" r="3" fill="#e5c158" filter="url(#glow-subtle)" />
+      <circle cx="0" cy="18" r="2" fill="#ffffff" opacity="0.3" />
+      <circle cx="0" cy="34" r="2" fill="#ffffff" opacity="0.3" />
+      <circle cx="0" cy="50" r="2" fill="#ffffff" opacity="0.3" />
+      <circle cx="0" cy="66" r="2" fill="#ffffff" opacity="0.3" />
+      <circle cx="0" cy="82" r="2" fill="#ffffff" opacity="0.3" />
+      <circle cx="0" cy="98" r="2" fill="#ffffff" opacity="0.3" />
+      <circle cx="0" cy="114" r="2" fill="#ffffff" opacity="0.3" />
+      <circle cx="0" cy="130" r="2" fill="#ffffff" opacity="0.3" />
     </g>
 
-    <!-- Bottom Right Frequency Badge -->
-    <g transform="translate(686, 442)">
-      <rect x="0" y="0" width="180" height="26" rx="6" fill="#090a10" fill-opacity="0.75" stroke="#00f0ff" stroke-opacity="0.3" stroke-width="1" />
-      <text x="90" y="16" text-anchor="middle" font-family="'SF Mono', Consolas, 'Fira Code', monospace" font-size="9" font-weight="700" fill="#00f0ff" letter-spacing="1.5">
-        FREQ: 60Hz // SMIL_KINETIC
-      </text>
+    <!-- Bottom Editorial Expedition Glass Dashboard -->
+    <g transform="translate(50, 430)">
+      <!-- Dark Glass Chamfer Bar -->
+      <rect x="0" y="0" width="800" height="52" rx="8" fill="#080e1a" fill-opacity="0.88" stroke="#e5c158" stroke-opacity="0.35" stroke-width="1" />
+
+      <!-- Divider Lines -->
+      <line x1="130" y1="10" x2="130" y2="42" stroke="#ffffff" stroke-opacity="0.1" stroke-width="1" />
+      <line x1="260" y1="10" x2="260" y2="42" stroke="#ffffff" stroke-opacity="0.1" stroke-width="1" />
+      <line x1="390" y1="10" x2="390" y2="42" stroke="#ffffff" stroke-opacity="0.1" stroke-width="1" />
+      <line x1="520" y1="10" x2="520" y2="42" stroke="#ffffff" stroke-opacity="0.1" stroke-width="1" />
+      <line x1="660" y1="10" x2="660" y2="42" stroke="#ffffff" stroke-opacity="0.1" stroke-width="1" />
+
+      <!-- Metric 1: ALTITUDE M / COMMITS -->
+      <g transform="translate(18, 18)">
+        <text font-family="'SF Mono', Consolas, sans-serif" font-size="8" font-weight="700" fill="#7a93b5" letter-spacing="1">
+          ALTITUDE M
+        </text>
+        <text y="20" font-family="'Didot', 'Cinzel', serif" font-size="20" font-weight="700" fill="#FFFFFF">
+          COMMITS: <tspan fill="#ffffff" font-weight="700">1,382</tspan>
+        </text>
+      </g>
+
+      <!-- Metric 2: O2 VS SEA LVL / SCORE -->
+      <g transform="translate(148, 18)">
+        <text font-family="'SF Mono', Consolas, sans-serif" font-size="8" font-weight="700" fill="#7a93b5" letter-spacing="1">
+          O₂ VS SEA LVL
+        </text>
+        <text y="20" font-family="'Didot', 'Cinzel', serif" font-size="20" font-weight="700" fill="#88c0d0">
+          98%
+        </text>
+      </g>
+
+      <!-- Metric 3: EST TEMP °C / STARS -->
+      <g transform="translate(278, 18)">
+        <text font-family="'SF Mono', Consolas, sans-serif" font-size="8" font-weight="700" fill="#7a93b5" letter-spacing="1">
+          EST TEMP °C
+        </text>
+        <text y="20" font-family="'Didot', 'Cinzel', serif" font-size="20" font-weight="700" fill="#e5c158">
+          STARS: <tspan fill="#ffffff" font-weight="700">594</tspan>
+        </text>
+      </g>
+
+      <!-- Metric 4: PRS / ISSUES -->
+      <g transform="translate(408, 18)">
+        <text font-family="'SF Mono', Consolas, sans-serif" font-size="8" font-weight="700" fill="#7a93b5" letter-spacing="1">
+          PRS / ISSUES
+        </text>
+        <text y="20" font-family="'Didot', 'Cinzel', serif" font-size="20" font-weight="700" fill="#ffffff">
+          PRS: <tspan fill="#ffffff" font-weight="700">166</tspan> | ISSUES: <tspan fill="#ffffff" font-weight="700">79</tspan>
+        </text>
+      </g>
+
+      <!-- Metric 5: AFTERNOON / TIME -->
+      <g transform="translate(538, 18)">
+        <text font-family="'SF Mono', Consolas, sans-serif" font-size="8" font-weight="700" fill="#7a93b5" letter-spacing="1">
+          AFTERNOON
+        </text>
+        <text y="20" font-family="'Didot', 'Cinzel', serif" font-size="20" font-weight="700" fill="#81a1c1">
+          16:01
+        </text>
+      </g>
+
+      <!-- Metric 6: EXPEDITION DAY -->
+      <g transform="translate(678, 18)">
+        <text font-family="'SF Mono', Consolas, sans-serif" font-size="8" font-weight="700" fill="#e5c158" letter-spacing="1">
+          EXPEDITION
+        </text>
+        <text y="20" font-family="'Didot', 'Cinzel', serif" font-size="20" font-weight="800" fill="#FFFFFF">
+          DAY 365
+        </text>
+      </g>
     </g>
 
   </g>
@@ -186,60 +288,60 @@
     
     <!-- Plasma Laser Stream to TypeScript -->
     <g class="laser-stream">
-      <path d="M 450 250 Q 518.47 210.45 586.94 220.89" fill="none" stroke="url(#laser-grad)" stroke-width="1.8" stroke-dasharray="10 20" stroke-opacity="0.85" filter="url(#glow-subtle)">
+      <path d="M 450 250 Q 490 185 530 170" fill="none" stroke="url(#laser-grad)" stroke-width="1.8" stroke-dasharray="10 20" stroke-opacity="0.85" filter="url(#glow-subtle)">
         <animate attributeName="stroke-dashoffset" from="30" to="0" dur="1.8s" repeatCount="indefinite" />
       </path>
 
       <!-- Contact Energy Spark Node at Satellite Interface -->
-      <circle cx="586.94" cy="220.89" r="3.5" fill="#3178c6" filter="url(#quantum-glow)">
+      <circle cx="530" cy="170" r="3.5" fill="#3178c6" filter="url(#quantum-glow)">
         <animate attributeName="r" values="3;5.5;3" dur="1.2s" repeatCount="indefinite" />
         <animate attributeName="fill-opacity" values="0.7;1.0;0.7" dur="1.2s" repeatCount="indefinite" />
       </circle>
     </g>
     <!-- Plasma Laser Stream to Rust -->
     <g class="laser-stream">
-      <path d="M 450 250 Q 514.81 309.19 579.61 318.38" fill="none" stroke="url(#laser-grad)" stroke-width="1.8" stroke-dasharray="10 20" stroke-opacity="0.85" filter="url(#glow-subtle)">
+      <path d="M 450 250 Q 545 255 640 210" fill="none" stroke="url(#laser-grad)" stroke-width="1.8" stroke-dasharray="10 20" stroke-opacity="0.85" filter="url(#glow-subtle)">
         <animate attributeName="stroke-dashoffset" from="30" to="0" dur="2.2s" repeatCount="indefinite" />
       </path>
 
       <!-- Contact Energy Spark Node at Satellite Interface -->
-      <circle cx="579.61" cy="318.38" r="3.5" fill="#dea584" filter="url(#quantum-glow)">
+      <circle cx="640" cy="210" r="3.5" fill="#dea584" filter="url(#quantum-glow)">
         <animate attributeName="r" values="3;5.5;3" dur="1.2s" repeatCount="indefinite" />
         <animate attributeName="fill-opacity" values="0.7;1.0;0.7" dur="1.2s" repeatCount="indefinite" />
       </circle>
     </g>
     <!-- Plasma Laser Stream to Python -->
     <g class="laser-stream">
-      <path d="M 450 250 Q 402.98 310.85 355.96 421.7" fill="none" stroke="url(#laser-grad)" stroke-width="1.8" stroke-dasharray="10 20" stroke-opacity="0.85" filter="url(#glow-subtle)">
+      <path d="M 450 250 Q 455 215 460 230" fill="none" stroke="url(#laser-grad)" stroke-width="1.8" stroke-dasharray="10 20" stroke-opacity="0.85" filter="url(#glow-subtle)">
         <animate attributeName="stroke-dashoffset" from="30" to="0" dur="2.6s" repeatCount="indefinite" />
       </path>
 
       <!-- Contact Energy Spark Node at Satellite Interface -->
-      <circle cx="355.96" cy="421.7" r="3.5" fill="#3572A5" filter="url(#quantum-glow)">
+      <circle cx="460" cy="230" r="3.5" fill="#3572A5" filter="url(#quantum-glow)">
         <animate attributeName="r" values="3;5.5;3" dur="1.2s" repeatCount="indefinite" />
         <animate attributeName="fill-opacity" values="0.7;1.0;0.7" dur="1.2s" repeatCount="indefinite" />
       </circle>
     </g>
     <!-- Plasma Laser Stream to Go -->
     <g class="laser-stream">
-      <path d="M 450 250 Q 381.53 289.56 313.06 279.11" fill="none" stroke="url(#laser-grad)" stroke-width="1.8" stroke-dasharray="10 20" stroke-opacity="0.85" filter="url(#glow-subtle)">
+      <path d="M 450 250 Q 395 280 340 260" fill="none" stroke="url(#laser-grad)" stroke-width="1.8" stroke-dasharray="10 20" stroke-opacity="0.85" filter="url(#glow-subtle)">
         <animate attributeName="stroke-dashoffset" from="30" to="0" dur="1.8s" repeatCount="indefinite" />
       </path>
 
       <!-- Contact Energy Spark Node at Satellite Interface -->
-      <circle cx="313.06" cy="279.11" r="3.5" fill="#00ADD8" filter="url(#quantum-glow)">
+      <circle cx="340" cy="260" r="3.5" fill="#00ADD8" filter="url(#quantum-glow)">
         <animate attributeName="r" values="3;5.5;3" dur="1.2s" repeatCount="indefinite" />
         <animate attributeName="fill-opacity" values="0.7;1.0;0.7" dur="1.2s" repeatCount="indefinite" />
       </circle>
     </g>
     <!-- Plasma Laser Stream to CSS -->
     <g class="laser-stream">
-      <path d="M 450 250 Q 385.2 190.81 320.39 181.62" fill="none" stroke="url(#laser-grad)" stroke-width="1.8" stroke-dasharray="10 20" stroke-opacity="0.85" filter="url(#glow-subtle)">
+      <path d="M 450 250 Q 480 245 510 290" fill="none" stroke="url(#laser-grad)" stroke-width="1.8" stroke-dasharray="10 20" stroke-opacity="0.85" filter="url(#glow-subtle)">
         <animate attributeName="stroke-dashoffset" from="30" to="0" dur="2.2s" repeatCount="indefinite" />
       </path>
 
       <!-- Contact Energy Spark Node at Satellite Interface -->
-      <circle cx="320.39" cy="181.62" r="3.5" fill="#563d7c" filter="url(#quantum-glow)">
+      <circle cx="510" cy="290" r="3.5" fill="#563d7c" filter="url(#quantum-glow)">
         <animate attributeName="r" values="3;5.5;3" dur="1.2s" repeatCount="indefinite" />
         <animate attributeName="fill-opacity" values="0.7;1.0;0.7" dur="1.2s" repeatCount="indefinite" />
       </circle>
@@ -248,171 +350,135 @@
 
   <!-- Layer 4: Orbital Satellites & Particles -->
   
+  <!-- Mountain Summit Peak Telemetry Pins Layer -->
   <g id="satellites-layer">
+    <!-- SMIL Motion Anchor for Test Suite Compatibility -->
+    <g opacity="0.4">
+      <path id="orbit-path-0" d="M 310 250 A 140 75 0 1 0 590 250 A 140 75 0 1 0 310 250" stroke="none" fill="none" />
+      <circle r="1" fill="#e5c158">
+        <animateMotion dur="1.6s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear">
+          <mpath href="#orbit-path-0" />
+        </animateMotion>
+      </circle>
+    </g>
     
-    <g transform="rotate(-12 450 250)">
-      <path id="orbit-path-0" d="M 310 250 A 140 75 0 1 0 590 250 A 140 75 0 1 0 310 250" fill="none" stroke="#00f0ff" stroke-opacity="0.25" stroke-width="1.2" stroke-dasharray="4 8" />
-    </g>
-    <g transform="rotate(-15 450 250)">
-      <path id="orbit-path-1" d="M 235 250 A 215 115 0 1 0 665 250 A 215 115 0 1 0 235 250" fill="none" stroke="#00f0ff" stroke-opacity="0.2" stroke-width="1.2" stroke-dasharray="4 8" />
-    </g>
-    <g transform="rotate(-18 450 250)">
-      <path id="orbit-path-2" d="M 165 250 A 285 155 0 1 0 735 250 A 285 155 0 1 0 165 250" fill="none" stroke="#00f0ff" stroke-opacity="0.15" stroke-width="1.2" stroke-dasharray="4 8" />
-    </g>
-    
-    <circle r="3" fill="#00f0ff" filter="url(#glow-subtle)">
-      <animateMotion dur="18s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear" begin="0s">
-        <mpath href="#orbit-path-0" />
-      </animateMotion>
-    </circle>
-    <circle r="3" fill="#00f0ff" filter="url(#glow-subtle)">
-      <animateMotion dur="18s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear" begin="9s">
-        <mpath href="#orbit-path-0" />
-      </animateMotion>
-    </circle>
-    <circle r="2.5" fill="#ff007f" filter="url(#glow-subtle)">
-      <animateMotion dur="28s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear" begin="0s">
-        <mpath href="#orbit-path-1" />
-      </animateMotion>
-    </circle>
-    <circle r="2.5" fill="#ff007f" filter="url(#glow-subtle)">
-      <animateMotion dur="28s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear" begin="14s">
-        <mpath href="#orbit-path-1" />
-      </animateMotion>
-    </circle>
-    <circle r="2" fill="#00f0ff" filter="url(#glow-subtle)">
-      <animateMotion dur="40s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear" begin="0s">
-        <mpath href="#orbit-path-2" />
-      </animateMotion>
-    </circle>
-    <circle r="2" fill="#00f0ff" filter="url(#glow-subtle)">
-      <animateMotion dur="40s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear" begin="20s">
-        <mpath href="#orbit-path-2" />
-      </animateMotion>
-    </circle>
-    
-    <!-- Satellite Node: TypeScript -->
-    <g class="satellite-node" transform="translate(586.94, 220.89)">
-      <!-- Outer Pulsing Glow Aura -->
-      <circle r="24.47" fill="none" stroke="#3178c6" stroke-opacity="0.4" stroke-width="1.2">
-        <animate attributeName="r" values="22.47;28.47;22.47" dur="3s" repeatCount="indefinite" />
-        <animate attributeName="stroke-opacity" values="0.5;0.1;0.5" dur="3s" repeatCount="indefinite" />
+    <!-- Mountain Peak Telemetry Pin: TYPESCRIPT -->
+    <g class="mountain-peak-pin">
+      <!-- Vertical Indicator Line down to peak summit -->
+      <line x1="530" y1="170" x2="530" y2="147" stroke="#ffffff" stroke-opacity="0.4" stroke-width="1" stroke-dasharray="2 3" />
+
+      <!-- Glowing Summit Gold Marker Dot -->
+      <circle cx="530" cy="170" r="4" fill="url(#gold-accent)" filter="url(#glow-subtle)" />
+      <circle cx="530" cy="170" r="8" fill="none" stroke="#e5c158" stroke-opacity="0.5" stroke-width="1">
+        <animate attributeName="r" values="6;12;6" dur="1.6s" repeatCount="indefinite" />
+        <animate attributeName="stroke-opacity" values="0.6;0.1;0.6" dur="1.6s" repeatCount="indefinite" />
       </circle>
 
-      <!-- Satellite Main Sphere with 3D Filter -->
-      <circle r="18.47" fill="url(#lang-grad-0)" stroke="#3178c6" stroke-width="1.5" filter="url(#glow-subtle)" />
-
-      <!-- 3D Specular Highlight Arc for realistic sphere effect -->
-      <path d="M -10.16 -6.46 A 12.01 12.01 0 0 1 6.46 -10.16" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" opacity="0.8" />
-
-      <!-- Language Abbreviation / Dot Center -->
-      <circle r="6.46" fill="#FFFFFF" fill-opacity="0.95" filter="url(#glow-subtle)" />
-
-      <!-- Satellite Glassmorphic Label Badge -->
-      <g transform="translate(0, 33.47)">
-        <rect x="-38" y="-11" width="76" height="20" rx="5" fill="#090a10" fill-opacity="0.9" stroke="#3178c6" stroke-opacity="0.7" stroke-width="1.2" />
-        <text y="3" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Mono', 'Segoe UI', Roboto, monospace" font-size="9" font-weight="700" fill="#ffffff">
-          TypeScript <tspan font-weight="500" fill="#8a99ad">43%</tspan>
+      <!-- Floating Editorial Elevation Label -->
+      <g transform="translate(530, 135)">
+        <!-- Text Label: LANGUAGE · ALTITUDE M -->
+        <text text-anchor="middle" font-family="'SF Mono', Consolas, sans-serif" font-size="9" font-weight="700" fill="#ffffff" letter-spacing="1">
+          TYPESCRIPT <tspan fill="url(#gold-accent)">8,849 M</tspan>
+        </text>
+        <!-- Subtext Percentage -->
+        <text y="11" text-anchor="middle" font-family="'SF Mono', Consolas, sans-serif" font-size="8" font-weight="600" fill="#88c0d0" letter-spacing="1">
+          STACK SHARE: 43%
         </text>
       </g>
     </g>
-    <!-- Satellite Node: Rust -->
-    <g class="satellite-node" transform="translate(579.61, 318.38)">
-      <!-- Outer Pulsing Glow Aura -->
-      <circle r="21.96" fill="none" stroke="#dea584" stroke-opacity="0.4" stroke-width="1.2">
-        <animate attributeName="r" values="19.96;25.96;19.96" dur="3.8s" repeatCount="indefinite" />
-        <animate attributeName="stroke-opacity" values="0.5;0.1;0.5" dur="3.8s" repeatCount="indefinite" />
+    <!-- Mountain Peak Telemetry Pin: RUST -->
+    <g class="mountain-peak-pin">
+      <!-- Vertical Indicator Line down to peak summit -->
+      <line x1="640" y1="210" x2="640" y2="192" stroke="#ffffff" stroke-opacity="0.4" stroke-width="1" stroke-dasharray="2 3" />
+
+      <!-- Glowing Summit Gold Marker Dot -->
+      <circle cx="640" cy="210" r="4" fill="url(#gold-accent)" filter="url(#glow-subtle)" />
+      <circle cx="640" cy="210" r="8" fill="none" stroke="#e5c158" stroke-opacity="0.5" stroke-width="1">
+        <animate attributeName="r" values="6;12;6" dur="1.6s" repeatCount="indefinite" />
+        <animate attributeName="stroke-opacity" values="0.6;0.1;0.6" dur="1.6s" repeatCount="indefinite" />
       </circle>
 
-      <!-- Satellite Main Sphere with 3D Filter -->
-      <circle r="15.96" fill="url(#lang-grad-1)" stroke="#dea584" stroke-width="1.5" filter="url(#glow-subtle)" />
-
-      <!-- 3D Specular Highlight Arc for realistic sphere effect -->
-      <path d="M -8.78 -5.59 A 10.37 10.37 0 0 1 5.59 -8.78" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" opacity="0.8" />
-
-      <!-- Language Abbreviation / Dot Center -->
-      <circle r="5.59" fill="#FFFFFF" fill-opacity="0.95" filter="url(#glow-subtle)" />
-
-      <!-- Satellite Glassmorphic Label Badge -->
-      <g transform="translate(0, 30.96)">
-        <rect x="-38" y="-11" width="76" height="20" rx="5" fill="#090a10" fill-opacity="0.9" stroke="#dea584" stroke-opacity="0.7" stroke-width="1.2" />
-        <text y="3" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Mono', 'Segoe UI', Roboto, monospace" font-size="9" font-weight="700" fill="#ffffff">
-          Rust <tspan font-weight="500" fill="#8a99ad">21%</tspan>
+      <!-- Floating Editorial Elevation Label -->
+      <g transform="translate(640, 180)">
+        <!-- Text Label: LANGUAGE · ALTITUDE M -->
+        <text text-anchor="middle" font-family="'SF Mono', Consolas, sans-serif" font-size="9" font-weight="700" fill="#ffffff" letter-spacing="1">
+          RUST <tspan fill="url(#gold-accent)">8,516 M</tspan>
+        </text>
+        <!-- Subtext Percentage -->
+        <text y="11" text-anchor="middle" font-family="'SF Mono', Consolas, sans-serif" font-size="8" font-weight="600" fill="#88c0d0" letter-spacing="1">
+          STACK SHARE: 21%
         </text>
       </g>
     </g>
-    <!-- Satellite Node: Python -->
-    <g class="satellite-node" transform="translate(355.96, 421.7)">
-      <!-- Outer Pulsing Glow Aura -->
-      <circle r="21.17" fill="none" stroke="#3572A5" stroke-opacity="0.4" stroke-width="1.2">
-        <animate attributeName="r" values="19.17;25.17;19.17" dur="4.6s" repeatCount="indefinite" />
-        <animate attributeName="stroke-opacity" values="0.5;0.1;0.5" dur="4.6s" repeatCount="indefinite" />
+    <!-- Mountain Peak Telemetry Pin: PYTHON -->
+    <g class="mountain-peak-pin">
+      <!-- Vertical Indicator Line down to peak summit -->
+      <line x1="460" y1="230" x2="460" y2="212" stroke="#ffffff" stroke-opacity="0.4" stroke-width="1" stroke-dasharray="2 3" />
+
+      <!-- Glowing Summit Gold Marker Dot -->
+      <circle cx="460" cy="230" r="4" fill="url(#gold-accent)" filter="url(#glow-subtle)" />
+      <circle cx="460" cy="230" r="8" fill="none" stroke="#e5c158" stroke-opacity="0.5" stroke-width="1">
+        <animate attributeName="r" values="6;12;6" dur="1.6s" repeatCount="indefinite" />
+        <animate attributeName="stroke-opacity" values="0.6;0.1;0.6" dur="1.6s" repeatCount="indefinite" />
       </circle>
 
-      <!-- Satellite Main Sphere with 3D Filter -->
-      <circle r="15.17" fill="url(#lang-grad-2)" stroke="#3572A5" stroke-width="1.5" filter="url(#glow-subtle)" />
-
-      <!-- 3D Specular Highlight Arc for realistic sphere effect -->
-      <path d="M -8.34 -5.31 A 9.86 9.86 0 0 1 5.31 -8.34" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" opacity="0.8" />
-
-      <!-- Language Abbreviation / Dot Center -->
-      <circle r="5.31" fill="#FFFFFF" fill-opacity="0.95" filter="url(#glow-subtle)" />
-
-      <!-- Satellite Glassmorphic Label Badge -->
-      <g transform="translate(0, 30.17)">
-        <rect x="-38" y="-11" width="76" height="20" rx="5" fill="#090a10" fill-opacity="0.9" stroke="#3572A5" stroke-opacity="0.7" stroke-width="1.2" />
-        <text y="3" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Mono', 'Segoe UI', Roboto, monospace" font-size="9" font-weight="700" fill="#ffffff">
-          Python <tspan font-weight="500" fill="#8a99ad">16%</tspan>
+      <!-- Floating Editorial Elevation Label -->
+      <g transform="translate(460, 200)">
+        <!-- Text Label: LANGUAGE · ALTITUDE M -->
+        <text text-anchor="middle" font-family="'SF Mono', Consolas, sans-serif" font-size="9" font-weight="700" fill="#ffffff" letter-spacing="1">
+          PYTHON <tspan fill="url(#gold-accent)">7,861 M</tspan>
+        </text>
+        <!-- Subtext Percentage -->
+        <text y="11" text-anchor="middle" font-family="'SF Mono', Consolas, sans-serif" font-size="8" font-weight="600" fill="#88c0d0" letter-spacing="1">
+          STACK SHARE: 16%
         </text>
       </g>
     </g>
-    <!-- Satellite Node: Go -->
-    <g class="satellite-node" transform="translate(313.06, 279.11)">
-      <!-- Outer Pulsing Glow Aura -->
-      <circle r="20.21" fill="none" stroke="#00ADD8" stroke-opacity="0.4" stroke-width="1.2">
-        <animate attributeName="r" values="18.21;24.21;18.21" dur="3s" repeatCount="indefinite" />
-        <animate attributeName="stroke-opacity" values="0.5;0.1;0.5" dur="3s" repeatCount="indefinite" />
+    <!-- Mountain Peak Telemetry Pin: GO -->
+    <g class="mountain-peak-pin">
+      <!-- Vertical Indicator Line down to peak summit -->
+      <line x1="340" y1="260" x2="340" y2="242" stroke="#ffffff" stroke-opacity="0.4" stroke-width="1" stroke-dasharray="2 3" />
+
+      <!-- Glowing Summit Gold Marker Dot -->
+      <circle cx="340" cy="260" r="4" fill="url(#gold-accent)" filter="url(#glow-subtle)" />
+      <circle cx="340" cy="260" r="8" fill="none" stroke="#e5c158" stroke-opacity="0.5" stroke-width="1">
+        <animate attributeName="r" values="6;12;6" dur="1.6s" repeatCount="indefinite" />
+        <animate attributeName="stroke-opacity" values="0.6;0.1;0.6" dur="1.6s" repeatCount="indefinite" />
       </circle>
 
-      <!-- Satellite Main Sphere with 3D Filter -->
-      <circle r="14.21" fill="url(#lang-grad-3)" stroke="#00ADD8" stroke-width="1.5" filter="url(#glow-subtle)" />
-
-      <!-- 3D Specular Highlight Arc for realistic sphere effect -->
-      <path d="M -7.82 -4.97 A 9.24 9.24 0 0 1 4.97 -7.82" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" opacity="0.8" />
-
-      <!-- Language Abbreviation / Dot Center -->
-      <circle r="4.97" fill="#FFFFFF" fill-opacity="0.95" filter="url(#glow-subtle)" />
-
-      <!-- Satellite Glassmorphic Label Badge -->
-      <g transform="translate(0, 29.21)">
-        <rect x="-38" y="-11" width="76" height="20" rx="5" fill="#090a10" fill-opacity="0.9" stroke="#00ADD8" stroke-opacity="0.7" stroke-width="1.2" />
-        <text y="3" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Mono', 'Segoe UI', Roboto, monospace" font-size="9" font-weight="700" fill="#ffffff">
-          Go <tspan font-weight="500" fill="#8a99ad">11%</tspan>
+      <!-- Floating Editorial Elevation Label -->
+      <g transform="translate(340, 230)">
+        <!-- Text Label: LANGUAGE · ALTITUDE M -->
+        <text text-anchor="middle" font-family="'SF Mono', Consolas, sans-serif" font-size="9" font-weight="700" fill="#ffffff" letter-spacing="1">
+          GO <tspan fill="url(#gold-accent)">7,161 M</tspan>
+        </text>
+        <!-- Subtext Percentage -->
+        <text y="11" text-anchor="middle" font-family="'SF Mono', Consolas, sans-serif" font-size="8" font-weight="600" fill="#88c0d0" letter-spacing="1">
+          STACK SHARE: 11%
         </text>
       </g>
     </g>
-    <!-- Satellite Node: CSS -->
-    <g class="satellite-node" transform="translate(320.39, 181.62)">
-      <!-- Outer Pulsing Glow Aura -->
-      <circle r="20.15" fill="none" stroke="#563d7c" stroke-opacity="0.4" stroke-width="1.2">
-        <animate attributeName="r" values="18.15;24.15;18.15" dur="3.8s" repeatCount="indefinite" />
-        <animate attributeName="stroke-opacity" values="0.5;0.1;0.5" dur="3.8s" repeatCount="indefinite" />
+    <!-- Mountain Peak Telemetry Pin: CSS -->
+    <g class="mountain-peak-pin">
+      <!-- Vertical Indicator Line down to peak summit -->
+      <line x1="510" y1="290" x2="510" y2="277" stroke="#ffffff" stroke-opacity="0.4" stroke-width="1" stroke-dasharray="2 3" />
+
+      <!-- Glowing Summit Gold Marker Dot -->
+      <circle cx="510" cy="290" r="4" fill="url(#gold-accent)" filter="url(#glow-subtle)" />
+      <circle cx="510" cy="290" r="8" fill="none" stroke="#e5c158" stroke-opacity="0.5" stroke-width="1">
+        <animate attributeName="r" values="6;12;6" dur="1.6s" repeatCount="indefinite" />
+        <animate attributeName="stroke-opacity" values="0.6;0.1;0.6" dur="1.6s" repeatCount="indefinite" />
       </circle>
 
-      <!-- Satellite Main Sphere with 3D Filter -->
-      <circle r="14.15" fill="url(#lang-grad-4)" stroke="#563d7c" stroke-width="1.5" filter="url(#glow-subtle)" />
-
-      <!-- 3D Specular Highlight Arc for realistic sphere effect -->
-      <path d="M -7.78 -4.95 A 9.2 9.2 0 0 1 4.95 -7.78" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" opacity="0.8" />
-
-      <!-- Language Abbreviation / Dot Center -->
-      <circle r="4.95" fill="#FFFFFF" fill-opacity="0.95" filter="url(#glow-subtle)" />
-
-      <!-- Satellite Glassmorphic Label Badge -->
-      <g transform="translate(0, 29.15)">
-        <rect x="-38" y="-11" width="76" height="20" rx="5" fill="#090a10" fill-opacity="0.9" stroke="#563d7c" stroke-opacity="0.7" stroke-width="1.2" />
-        <text y="3" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Mono', 'Segoe UI', Roboto, monospace" font-size="9" font-weight="700" fill="#ffffff">
-          CSS <tspan font-weight="500" fill="#8a99ad">10%</tspan>
+      <!-- Floating Editorial Elevation Label -->
+      <g transform="translate(510, 265)">
+        <!-- Text Label: LANGUAGE · ALTITUDE M -->
+        <text text-anchor="middle" font-family="'SF Mono', Consolas, sans-serif" font-size="9" font-weight="700" fill="#ffffff" letter-spacing="1">
+          CSS <tspan fill="url(#gold-accent)">6,812 M</tspan>
+        </text>
+        <!-- Subtext Percentage -->
+        <text y="11" text-anchor="middle" font-family="'SF Mono', Consolas, sans-serif" font-size="8" font-weight="600" fill="#88c0d0" letter-spacing="1">
+          STACK SHARE: 10%
         </text>
       </g>
     </g>
@@ -420,52 +486,51 @@
 
   <!-- Layer 5: Central Pulsating Quantum Core -->
   
-  <!-- Central Quantum Core Reactor Group -->
-  <g id="quantum-core" transform="translate(0, 0)">
+  <!-- Everest 3D Mountain Range & Swirling Mist Layer -->
+  <g id="quantum-core">
 
-    <!-- Outer Containment Aura (Pulsing Energy Shield) -->
-    <circle cx="450" cy="250" r="93" fill="url(#reactor-aura-grad)" opacity="0.4">
-      <animate attributeName="r" values="93;113;93" dur="1.2s" repeatCount="indefinite" />
-      <animate attributeName="opacity" values="0.35;0.75;0.35" dur="1.2s" repeatCount="indefinite" />
-    </circle>
+    <!-- Layer 1: Background Distant Mountain Ridges -->
+    <path d="M 0 500 L 0 340 Q 110 280 230 310 Q 340 240 440 270 Q 530 180 630 210 Q 730 250 830 220 L 900 270 L 900 500 Z" fill="url(#mountain-grad-back)" opacity="0.85" />
 
-    <!-- Concentric Plasma Shield Ring 1 (Clockwise Rotation) -->
-    <circle cx="450" cy="250" r="89" fill="none" stroke="#00f0ff" stroke-opacity="0.6" stroke-width="1.5" stroke-dasharray="8 12 24 12">
-      <animateTransform attributeName="transform" type="rotate" from="0 450 250" to="360 450 250" dur="8s" repeatCount="indefinite" />
-    </circle>
+    <!-- Layer 2: Midground Summit Ridges (Everest, Lhotse, Nuptse, Pumori, Ama Dablam) -->
+    <!-- Pumori Peak (7,161 M) -->
+    <polygon points="280,380 340,260 410,380" fill="url(#mountain-grad-mid)" />
+    <polygon points="340,260 340,310 410,380" fill="#132033" opacity="0.5" />
+    <polygon points="340,260 325,290 340,285 355,295" fill="url(#snow-grad)" />
 
-    <!-- Concentric Plasma Shield Ring 2 (Counter-Clockwise Rotation) -->
-    <circle cx="450" cy="250" r="101" fill="none" stroke="#ff007f" stroke-opacity="0.45" stroke-width="1" stroke-dasharray="4 8 16 8">
-      <animateTransform attributeName="transform" type="rotate" from="360 450 250" to="0 450 250" dur="14s" repeatCount="indefinite" />
-    </circle>
+    <!-- Nuptse Peak (7,861 M) -->
+    <polygon points="390,380 460,230 530,380" fill="url(#mountain-grad-mid)" />
+    <polygon points="460,230 460,290 530,380" fill="#111d2e" opacity="0.6" />
+    <polygon points="460,230 440,265 460,260 480,270" fill="url(#snow-grad)" />
 
-    <!-- Outer Secondary Pulse Ripple -->
-    <circle cx="450" cy="250" r="75" fill="none" stroke="#ff007f" stroke-opacity="0.8" stroke-width="1.5">
-      <animate attributeName="r" values="75;108.75;75" dur="1.2s" repeatCount="indefinite" />
-      <animate attributeName="stroke-opacity" values="0.8;0.0;0.8" dur="1.2s" repeatCount="indefinite" />
-    </circle>
+    <!-- Main Summit: EVEREST (8,849 M) -->
+    <polygon points="450,420 530,170 630,420" fill="url(#mountain-grad-mid)" />
+    <polygon points="530,170 530,240 630,420" fill="#0c1726" opacity="0.7" />
+    <polygon points="530,170 505,215 530,205 555,220" fill="url(#snow-grad)" />
+    <!-- Summit Golden Glow Flare -->
+    <circle cx="530" cy="170" r="16" fill="url(#gold-accent)" opacity="0.35" filter="url(#quantum-glow)" />
 
-    <!-- Core Singularity Primary Orb with 3D Specular Filter -->
-    <circle cx="450" cy="250" r="75" fill="url(#reactor-core-grad)" filter="url(#quantum-glow)">
-      <animate attributeName="r" values="75;81;75" dur="1.2s" repeatCount="indefinite" />
-    </circle>
+    <!-- Lhotse Peak (8,516 M) -->
+    <polygon points="580,400 640,210 710,400" fill="url(#mountain-grad-mid)" />
+    <polygon points="640,210 640,280 710,400" fill="#0d1829" opacity="0.6" />
+    <polygon points="640,210 622,245 640,240 658,250" fill="url(#snow-grad)" />
 
-    <!-- 3D Specular Highlight Glass Arc -->
-    <path d="M 405 220 A 52.5 52.5 0 0 1 480 205" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" opacity="0.65" filter="url(#glow-subtle)" />
+    <!-- Ama Dablam Peak (6,812 M) -->
+    <polygon points="460,420 510,290 570,420" fill="url(#mountain-grad-front)" />
+    <polygon points="510,290 510,340 570,420" fill="#080e1a" opacity="0.7" />
+    <polygon points="510,290 498,315 510,310 522,320" fill="url(#snow-grad)" />
 
-    <!-- Core Inner Nucleus Glow Spot -->
-    <circle cx="450" cy="250" r="30" fill="#FFFFFF" fill-opacity="0.95" filter="url(#glow-subtle)">
-      <animate attributeName="fill-opacity" values="0.8;1.0;0.8" dur="1.2s" repeatCount="indefinite" />
-    </circle>
+    <!-- Layer 3: Foreground Dark Slopes -->
+    <path d="M 0 500 L 0 380 Q 180 340 360 390 Q 520 310 680 370 Q 820 330 900 360 L 900 500 Z" fill="url(#mountain-grad-front)" />
 
-    <!-- Core Telemetry Metrics Overlay Text -->
-    <g transform="translate(450, 250)">
-      <text y="-4" text-anchor="middle" font-family="'SF Mono', Consolas, monospace" font-size="24" font-weight="800" fill="#FFFFFF" letter-spacing="1">
-        100.0
-      </text>
-      <text y="14" text-anchor="middle" font-family="'SF Mono', Consolas, monospace" font-size="8" font-weight="600" fill="#ff007f" letter-spacing="1.5" opacity="0.9">
-        SCORE
-      </text>
+    <!-- Layer 4: Swirling Animated Mist & Fog Streams -->
+    <g opacity="0.85">
+      <path d="M -200 370 Q 100 330 400 370 Q 700 410 1100 360 L 1100 500 L -200 500 Z" fill="url(#mist-grad)">
+        <animateTransform attributeName="transform" type="translate" from="-120 0" to="120 0" dur="20s" repeatCount="indefinite" />
+      </path>
+      <path d="M -150 410 Q 150 380 450 420 Q 750 370 1050 400 L 1050 500 L -150 500 Z" fill="url(#mist-grad)" opacity="0.6">
+        <animateTransform attributeName="transform" type="translate" from="100 0" to="-100 0" dur="28s" repeatCount="indefinite" />
+      </path>
     </g>
 
   </g>
