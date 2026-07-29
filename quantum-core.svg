@@ -8,50 +8,60 @@
 
   
   <defs>
-    <!-- Core Quantum Glow Filter -->
+    <!-- 3D Specular & Raytrace Lighting Filter -->
     <filter id="quantum-glow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feGaussianBlur stdDeviation="6" result="blur" />
       <feMerge>
         <feMergeNode in="blur" />
         <feMergeNode in="SourceGraphic" />
       </feMerge>
     </filter>
 
-    <!-- Subtle Glow Filter -->
     <filter id="glow-subtle" x="-30%" y="-30%" width="160%" height="160%">
-      <feGaussianBlur stdDeviation="2.5" result="blur" />
+      <feGaussianBlur stdDeviation="3" result="blur" />
       <feMerge>
         <feMergeNode in="blur" />
         <feMergeNode in="SourceGraphic" />
       </feMerge>
+    </filter>
+
+    <!-- Photorealistic 3D Sphere Specular Light -->
+    <filter id="sphere-3d-light" x="-20%" y="-20%" width="140%" height="140%">
+      <feSpecularLighting result="specOut" surfaceScale="5" specularConstant="1.2" specularExponent="35" lighting-color="#ffffff">
+        <feDistantLight azimuth="135" elevation="60" />
+      </feSpecularLighting>
+      <feComposite in="specOut" in2="SourceAlpha" operator="in" result="specOut" />
+      <feComposite in="SourceGraphic" in2="specOut" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" />
     </filter>
 
     <!-- Background Linear Gradient -->
     <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#090a10" />
+      <stop offset="50%" stop-color="#0c0e18" />
       <stop offset="100%" stop-color="#121526" />
     </linearGradient>
 
-    <!-- Central Reactor Core Radial Gradient -->
-    <radialGradient id="reactor-core-grad" cx="50%" cy="50%" r="50%">
+    <!-- 3D Metallic Glass Reactor Core Radial Gradient -->
+    <radialGradient id="reactor-core-grad" cx="38%" cy="38%" r="62%">
       <stop offset="0%" stop-color="#FFFFFF" stop-opacity="1" />
-      <stop offset="35%" stop-color="#ff007f" stop-opacity="0.9" />
-      <stop offset="70%" stop-color="#00f0ff" stop-opacity="0.7" />
-      <stop offset="100%" stop-color="#0088ff" stop-opacity="0.3" />
+      <stop offset="25%" stop-color="#ff007f" stop-opacity="0.95" />
+      <stop offset="65%" stop-color="#00f0ff" stop-opacity="0.8" />
+      <stop offset="90%" stop-color="#0088ff" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#05060b" stop-opacity="0.95" />
     </radialGradient>
 
-    <!-- Outer Containment Aura Radial Gradient -->
+    <!-- 3D Outer Containment Aura Radial Gradient -->
     <radialGradient id="reactor-aura-grad" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.5" />
-      <stop offset="60%" stop-color="#0088ff" stop-opacity="0.2" />
+      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.6" />
+      <stop offset="50%" stop-color="#0088ff" stop-opacity="0.25" />
       <stop offset="100%" stop-color="#090a10" stop-opacity="0" />
     </radialGradient>
 
-    <!-- Laser Stream Linear Gradient -->
+    <!-- 3D Laser Stream Linear Gradient -->
     <linearGradient id="laser-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.9" />
-      <stop offset="50%" stop-color="#ff007f" stop-opacity="0.6" />
-      <stop offset="100%" stop-color="#ff007f" stop-opacity="0.2" />
+      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.95" />
+      <stop offset="50%" stop-color="#ff007f" stop-opacity="0.7" />
+      <stop offset="100%" stop-color="#ff007f" stop-opacity="0.15" />
     </linearGradient>
 
     <!-- Tactical Sci-Fi Matrix Background Pattern -->
@@ -126,39 +136,43 @@
       <animateTransform attributeName="transform" type="rotate" from="0 450 250" to="360 450 250" dur="28s" repeatCount="indefinite" />
     </circle>
 
-    <!-- Top Left Header HUD Readout -->
-    <g transform="translate(39, 42)">
-      <text font-family="'SF Mono', Consolas, 'Fira Code', monospace" font-size="10" font-weight="700" fill="#00f0ff" letter-spacing="1.5">
-        QUANTUM KINETIC CORE <tspan fill="#ff007f">// v1.0</tspan>
+    <!-- Top Left Header Glass HUD Panel -->
+    <g transform="translate(34, 34)">
+      <rect x="0" y="0" width="220" height="34" rx="6" fill="#090a10" fill-opacity="0.75" stroke="#00f0ff" stroke-opacity="0.3" stroke-width="1" />
+      <text x="10" y="15" font-family="'SF Mono', Consolas, 'Fira Code', monospace" font-size="10" font-weight="800" fill="#00f0ff" letter-spacing="1.5">
+        QUANTUM KINETIC CORE <tspan fill="#ff007f">// v2.0</tspan>
       </text>
-      <text y="15" font-family="'SF Mono', Consolas, 'Fira Code', monospace" font-size="9" fill="#8a99ad" letter-spacing="1">
+      <text x="10" y="27" font-family="'SF Mono', Consolas, 'Fira Code', monospace" font-size="9" fill="#8a99ad" letter-spacing="1">
         USER: @SHIVANSH01-24
       </text>
     </g>
 
-    <!-- Top Right Status Readout -->
-    <g transform="translate(861, 42)">
-      <text text-anchor="end" font-family="'SF Mono', Consolas, 'Fira Code', monospace" font-size="10" font-weight="700" fill="#00f0ff" letter-spacing="1.2">
+    <!-- Top Right Status Glass HUD Panel -->
+    <g transform="translate(706, 34)">
+      <rect x="0" y="0" width="160" height="34" rx="6" fill="#090a10" fill-opacity="0.75" stroke="#00f0ff" stroke-opacity="0.3" stroke-width="1" />
+      <text x="150" y="15" text-anchor="end" font-family="'SF Mono', Consolas, 'Fira Code', monospace" font-size="10" font-weight="800" fill="#00f0ff" letter-spacing="1.2">
         RANK: S+
       </text>
-      <text y="15" text-anchor="end" font-family="'SF Mono', Consolas, 'Fira Code', monospace" font-size="9" fill="#ff007f" letter-spacing="1">
+      <text x="150" y="27" text-anchor="end" font-family="'SF Mono', Consolas, 'Fira Code', monospace" font-size="9" fill="#ff007f" letter-spacing="1">
         STATUS: ONLINE
       </text>
     </g>
 
-    <!-- Bottom Left Telemetry Stats Readout -->
-    <g transform="translate(39, 454)">
-      <text font-family="'SF Mono', Consolas, 'Fira Code', monospace" font-size="9" font-weight="600" fill="#8a99ad" letter-spacing="1">
+    <!-- Bottom Left Telemetry Glass Stats Panel -->
+    <g transform="translate(34, 432)">
+      <rect x="0" y="0" width="275" height="36" rx="6" fill="#090a10" fill-opacity="0.75" stroke="#00f0ff" stroke-opacity="0.3" stroke-width="1" />
+      <text x="10" y="16" font-family="'SF Mono', Consolas, 'Fira Code', monospace" font-size="9" font-weight="700" fill="#8a99ad" letter-spacing="1">
         COMMITS: <tspan fill="#ffffff" font-weight="700">1,382</tspan> | STARS: <tspan fill="#ffffff" font-weight="700">594</tspan>
       </text>
-      <text y="14" font-family="'SF Mono', Consolas, 'Fira Code', monospace" font-size="9" font-weight="600" fill="#8a99ad" letter-spacing="1">
+      <text x="10" y="28" font-family="'SF Mono', Consolas, 'Fira Code', monospace" font-size="9" font-weight="700" fill="#8a99ad" letter-spacing="1">
         PRS: <tspan fill="#ffffff" font-weight="700">166</tspan> | ISSUES: <tspan fill="#ffffff" font-weight="700">79</tspan>
       </text>
     </g>
 
     <!-- Bottom Right Frequency Badge -->
-    <g transform="translate(861, 464)">
-      <text text-anchor="end" font-family="'SF Mono', Consolas, 'Fira Code', monospace" font-size="9" font-weight="600" fill="#00f0ff" letter-spacing="1.5">
+    <g transform="translate(686, 442)">
+      <rect x="0" y="0" width="180" height="26" rx="6" fill="#090a10" fill-opacity="0.75" stroke="#00f0ff" stroke-opacity="0.3" stroke-width="1" />
+      <text x="90" y="16" text-anchor="middle" font-family="'SF Mono', Consolas, 'Fira Code', monospace" font-size="9" font-weight="700" fill="#00f0ff" letter-spacing="1.5">
         FREQ: 60Hz // SMIL_KINETIC
       </text>
     </g>
@@ -285,17 +299,20 @@
         <animate attributeName="stroke-opacity" values="0.5;0.1;0.5" dur="3s" repeatCount="indefinite" />
       </circle>
 
-      <!-- Satellite Main Sphere -->
+      <!-- Satellite Main Sphere with 3D Filter -->
       <circle r="18.47" fill="url(#lang-grad-0)" stroke="#3178c6" stroke-width="1.5" filter="url(#glow-subtle)" />
 
-      <!-- Language Abbreviation / Dot Center -->
-      <circle r="6.46" fill="#FFFFFF" fill-opacity="0.9" />
+      <!-- 3D Specular Highlight Arc for realistic sphere effect -->
+      <path d="M -10.16 -6.46 A 12.01 12.01 0 0 1 6.46 -10.16" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" opacity="0.8" />
 
-      <!-- Satellite Label Badge -->
+      <!-- Language Abbreviation / Dot Center -->
+      <circle r="6.46" fill="#FFFFFF" fill-opacity="0.95" filter="url(#glow-subtle)" />
+
+      <!-- Satellite Glassmorphic Label Badge -->
       <g transform="translate(0, 33.47)">
-        <rect x="-35" y="-10" width="70" height="18" rx="4" fill="#090a10" fill-opacity="0.85" stroke="#3178c6" stroke-opacity="0.6" stroke-width="1" />
-        <text y="2" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="700" fill="#ffffff">
-          TypeScript <tspan font-weight="400" fill="#8a99ad">43%</tspan>
+        <rect x="-38" y="-11" width="76" height="20" rx="5" fill="#090a10" fill-opacity="0.9" stroke="#3178c6" stroke-opacity="0.7" stroke-width="1.2" />
+        <text y="3" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Mono', 'Segoe UI', Roboto, monospace" font-size="9" font-weight="700" fill="#ffffff">
+          TypeScript <tspan font-weight="500" fill="#8a99ad">43%</tspan>
         </text>
       </g>
     </g>
@@ -307,17 +324,20 @@
         <animate attributeName="stroke-opacity" values="0.5;0.1;0.5" dur="3.8s" repeatCount="indefinite" />
       </circle>
 
-      <!-- Satellite Main Sphere -->
+      <!-- Satellite Main Sphere with 3D Filter -->
       <circle r="15.96" fill="url(#lang-grad-1)" stroke="#dea584" stroke-width="1.5" filter="url(#glow-subtle)" />
 
-      <!-- Language Abbreviation / Dot Center -->
-      <circle r="5.59" fill="#FFFFFF" fill-opacity="0.9" />
+      <!-- 3D Specular Highlight Arc for realistic sphere effect -->
+      <path d="M -8.78 -5.59 A 10.37 10.37 0 0 1 5.59 -8.78" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" opacity="0.8" />
 
-      <!-- Satellite Label Badge -->
+      <!-- Language Abbreviation / Dot Center -->
+      <circle r="5.59" fill="#FFFFFF" fill-opacity="0.95" filter="url(#glow-subtle)" />
+
+      <!-- Satellite Glassmorphic Label Badge -->
       <g transform="translate(0, 30.96)">
-        <rect x="-35" y="-10" width="70" height="18" rx="4" fill="#090a10" fill-opacity="0.85" stroke="#dea584" stroke-opacity="0.6" stroke-width="1" />
-        <text y="2" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="700" fill="#ffffff">
-          Rust <tspan font-weight="400" fill="#8a99ad">21%</tspan>
+        <rect x="-38" y="-11" width="76" height="20" rx="5" fill="#090a10" fill-opacity="0.9" stroke="#dea584" stroke-opacity="0.7" stroke-width="1.2" />
+        <text y="3" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Mono', 'Segoe UI', Roboto, monospace" font-size="9" font-weight="700" fill="#ffffff">
+          Rust <tspan font-weight="500" fill="#8a99ad">21%</tspan>
         </text>
       </g>
     </g>
@@ -329,17 +349,20 @@
         <animate attributeName="stroke-opacity" values="0.5;0.1;0.5" dur="4.6s" repeatCount="indefinite" />
       </circle>
 
-      <!-- Satellite Main Sphere -->
+      <!-- Satellite Main Sphere with 3D Filter -->
       <circle r="15.17" fill="url(#lang-grad-2)" stroke="#3572A5" stroke-width="1.5" filter="url(#glow-subtle)" />
 
-      <!-- Language Abbreviation / Dot Center -->
-      <circle r="5.31" fill="#FFFFFF" fill-opacity="0.9" />
+      <!-- 3D Specular Highlight Arc for realistic sphere effect -->
+      <path d="M -8.34 -5.31 A 9.86 9.86 0 0 1 5.31 -8.34" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" opacity="0.8" />
 
-      <!-- Satellite Label Badge -->
+      <!-- Language Abbreviation / Dot Center -->
+      <circle r="5.31" fill="#FFFFFF" fill-opacity="0.95" filter="url(#glow-subtle)" />
+
+      <!-- Satellite Glassmorphic Label Badge -->
       <g transform="translate(0, 30.17)">
-        <rect x="-35" y="-10" width="70" height="18" rx="4" fill="#090a10" fill-opacity="0.85" stroke="#3572A5" stroke-opacity="0.6" stroke-width="1" />
-        <text y="2" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="700" fill="#ffffff">
-          Python <tspan font-weight="400" fill="#8a99ad">16%</tspan>
+        <rect x="-38" y="-11" width="76" height="20" rx="5" fill="#090a10" fill-opacity="0.9" stroke="#3572A5" stroke-opacity="0.7" stroke-width="1.2" />
+        <text y="3" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Mono', 'Segoe UI', Roboto, monospace" font-size="9" font-weight="700" fill="#ffffff">
+          Python <tspan font-weight="500" fill="#8a99ad">16%</tspan>
         </text>
       </g>
     </g>
@@ -351,17 +374,20 @@
         <animate attributeName="stroke-opacity" values="0.5;0.1;0.5" dur="3s" repeatCount="indefinite" />
       </circle>
 
-      <!-- Satellite Main Sphere -->
+      <!-- Satellite Main Sphere with 3D Filter -->
       <circle r="14.21" fill="url(#lang-grad-3)" stroke="#00ADD8" stroke-width="1.5" filter="url(#glow-subtle)" />
 
-      <!-- Language Abbreviation / Dot Center -->
-      <circle r="4.97" fill="#FFFFFF" fill-opacity="0.9" />
+      <!-- 3D Specular Highlight Arc for realistic sphere effect -->
+      <path d="M -7.82 -4.97 A 9.24 9.24 0 0 1 4.97 -7.82" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" opacity="0.8" />
 
-      <!-- Satellite Label Badge -->
+      <!-- Language Abbreviation / Dot Center -->
+      <circle r="4.97" fill="#FFFFFF" fill-opacity="0.95" filter="url(#glow-subtle)" />
+
+      <!-- Satellite Glassmorphic Label Badge -->
       <g transform="translate(0, 29.21)">
-        <rect x="-35" y="-10" width="70" height="18" rx="4" fill="#090a10" fill-opacity="0.85" stroke="#00ADD8" stroke-opacity="0.6" stroke-width="1" />
-        <text y="2" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="700" fill="#ffffff">
-          Go <tspan font-weight="400" fill="#8a99ad">11%</tspan>
+        <rect x="-38" y="-11" width="76" height="20" rx="5" fill="#090a10" fill-opacity="0.9" stroke="#00ADD8" stroke-opacity="0.7" stroke-width="1.2" />
+        <text y="3" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Mono', 'Segoe UI', Roboto, monospace" font-size="9" font-weight="700" fill="#ffffff">
+          Go <tspan font-weight="500" fill="#8a99ad">11%</tspan>
         </text>
       </g>
     </g>
@@ -373,17 +399,20 @@
         <animate attributeName="stroke-opacity" values="0.5;0.1;0.5" dur="3.8s" repeatCount="indefinite" />
       </circle>
 
-      <!-- Satellite Main Sphere -->
+      <!-- Satellite Main Sphere with 3D Filter -->
       <circle r="14.15" fill="url(#lang-grad-4)" stroke="#563d7c" stroke-width="1.5" filter="url(#glow-subtle)" />
 
-      <!-- Language Abbreviation / Dot Center -->
-      <circle r="4.95" fill="#FFFFFF" fill-opacity="0.9" />
+      <!-- 3D Specular Highlight Arc for realistic sphere effect -->
+      <path d="M -7.78 -4.95 A 9.2 9.2 0 0 1 4.95 -7.78" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" opacity="0.8" />
 
-      <!-- Satellite Label Badge -->
+      <!-- Language Abbreviation / Dot Center -->
+      <circle r="4.95" fill="#FFFFFF" fill-opacity="0.95" filter="url(#glow-subtle)" />
+
+      <!-- Satellite Glassmorphic Label Badge -->
       <g transform="translate(0, 29.15)">
-        <rect x="-35" y="-10" width="70" height="18" rx="4" fill="#090a10" fill-opacity="0.85" stroke="#563d7c" stroke-opacity="0.6" stroke-width="1" />
-        <text y="2" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="700" fill="#ffffff">
-          CSS <tspan font-weight="400" fill="#8a99ad">10%</tspan>
+        <rect x="-38" y="-11" width="76" height="20" rx="5" fill="#090a10" fill-opacity="0.9" stroke="#563d7c" stroke-opacity="0.7" stroke-width="1.2" />
+        <text y="3" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Mono', 'Segoe UI', Roboto, monospace" font-size="9" font-weight="700" fill="#ffffff">
+          CSS <tspan font-weight="500" fill="#8a99ad">10%</tspan>
         </text>
       </g>
     </g>
@@ -416,10 +445,13 @@
       <animate attributeName="stroke-opacity" values="0.8;0.0;0.8" dur="1.2s" repeatCount="indefinite" />
     </circle>
 
-    <!-- Core Singularity Primary Orb -->
+    <!-- Core Singularity Primary Orb with 3D Specular Filter -->
     <circle cx="450" cy="250" r="75" fill="url(#reactor-core-grad)" filter="url(#quantum-glow)">
       <animate attributeName="r" values="75;81;75" dur="1.2s" repeatCount="indefinite" />
     </circle>
+
+    <!-- 3D Specular Highlight Glass Arc -->
+    <path d="M 405 220 A 52.5 52.5 0 0 1 480 205" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" opacity="0.65" filter="url(#glow-subtle)" />
 
     <!-- Core Inner Nucleus Glow Spot -->
     <circle cx="450" cy="250" r="30" fill="#FFFFFF" fill-opacity="0.95" filter="url(#glow-subtle)">
