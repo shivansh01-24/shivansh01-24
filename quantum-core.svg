@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+  <style>
+    .bg-main { fill: url(#bg-grad); }
+    .bg-grid { fill: url(#matrix-grid); }
+    text { user-select: none; }
+  </style>
+
+  
+  <defs>
+    <!-- Core Quantum Glow Filter -->
+    <filter id="quantum-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Subtle Glow Filter -->
+    <filter id="glow-subtle" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="2.5" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Background Linear Gradient -->
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090a10" />
+      <stop offset="100%" stop-color="#121526" />
+    </linearGradient>
+
+    <!-- Central Reactor Core Radial Gradient -->
+    <radialGradient id="reactor-core-grad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="1" />
+      <stop offset="35%" stop-color="#ff007f" stop-opacity="0.9" />
+      <stop offset="70%" stop-color="#00f0ff" stop-opacity="0.7" />
+      <stop offset="100%" stop-color="#0088ff" stop-opacity="0.3" />
+    </radialGradient>
+
+    <!-- Outer Containment Aura Radial Gradient -->
+    <radialGradient id="reactor-aura-grad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.5" />
+      <stop offset="60%" stop-color="#0088ff" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#090a10" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Laser Stream Linear Gradient -->
+    <linearGradient id="laser-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.9" />
+      <stop offset="50%" stop-color="#ff007f" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#ff007f" stop-opacity="0.2" />
+    </linearGradient>
+
+    <!-- Tactical Sci-Fi Matrix Background Pattern -->
+    <pattern id="matrix-grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#00f0ff" stroke-opacity="0.05" stroke-width="1" />
+      <circle cx="0" cy="0" r="1" fill="#00f0ff" fill-opacity="0.15" />
+    </pattern>
+
+    
+    <radialGradient id="lang-grad-0" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="60%" stop-color="#3178c6" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#3178c6" stop-opacity="0.4"/>
+    </radialGradient>
+    <radialGradient id="lang-grad-1" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="60%" stop-color="#dea584" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#dea584" stop-opacity="0.4"/>
+    </radialGradient>
+    <radialGradient id="lang-grad-2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="60%" stop-color="#3572A5" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#3572A5" stop-opacity="0.4"/>
+    </radialGradient>
+    <radialGradient id="lang-grad-3" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="60%" stop-color="#00ADD8" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#00ADD8" stop-opacity="0.4"/>
+    </radialGradient>
+    <radialGradient id="lang-grad-4" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="60%" stop-color="#563d7c" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#563d7c" stop-opacity="0.4"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Layer 1: Background Void & Tactical Grid -->
+  <rect width="900" height="500" class="bg-main" />
+  <rect width="900" height="500" class="bg-grid" />
+
+  <!-- Layer 2: Telemetry HUD Overlay -->
+  
+  <!-- Telemetry HUD Layer -->
+  <g id="telemetry-layer">
+
+    <!-- Kinetic Corner Reticle Brackets -->
+    <g fill="none" stroke="#00f0ff" stroke-width="2" stroke-opacity="0.8" filter="url(#glow-subtle)">
+      <path d="M 24 44 L 24 24 L 44 24" />
+      <path d="M 856 24 L 876 24 L 876 44" />
+      <path d="M 24 456 L 24 476 L 44 476" />
+      <path d="M 856 476 L 876 476 L 876 456" />
+    </g>
+
+    <!-- Corner Reticle Micro Dots -->
+    <circle cx="24" cy="24" r="2" fill="#ff007f" />
+    <circle cx="876" cy="24" r="2" fill="#ff007f" />
+    <circle cx="24" cy="476" r="2" fill="#ff007f" />
+    <circle cx="876" cy="476" r="2" fill="#ff007f" />
+
+    <!-- Holographic Counter-Rotating Ring 1 (Inner) -->
+    <circle cx="450" cy="250" r="110" fill="none" stroke="#00f0ff" stroke-opacity="0.2" stroke-width="1.5" stroke-dasharray="15 5 30 5">
+      <animateTransform attributeName="transform" type="rotate" from="0 450 250" to="360 450 250" dur="20s" repeatCount="indefinite" />
+    </circle>
+
+    <!-- Holographic Counter-Rotating Ring 2 (Middle) -->
+    <circle cx="450" cy="250" r="175" fill="none" stroke="#ff007f" stroke-opacity="0.18" stroke-width="1" stroke-dasharray="4 8 20 8">
+      <animateTransform attributeName="transform" type="rotate" from="360 450 250" to="0 450 250" dur="16s" repeatCount="indefinite" />
+    </circle>
+
+    <!-- Holographic Counter-Rotating Ring 3 (Outer) -->
+    <circle cx="450" cy="250" r="235" fill="none" stroke="#00f0ff" stroke-opacity="0.15" stroke-width="1.5" stroke-dasharray="2 12 40 12">
+      <animateTransform attributeName="transform" type="rotate" from="0 450 250" to="360 450 250" dur="28s" repeatCount="indefinite" />
+    </circle>
+
+    <!-- Top Left Header HUD Readout -->
+    <g transform="translate(39, 42)">
+      <text font-family="'SF Mono', Consolas, 'Fira Code', monospace" font-size="10" font-weight="700" fill="#00f0ff" letter-spacing="1.5">
+        QUANTUM KINETIC CORE <tspan fill="#ff007f">// v1.0</tspan>
+      </text>
+      <text y="15" font-family="'SF Mono', Consolas, 'Fira Code', monospace" font-size="9" fill="#8a99ad" letter-spacing="1">
+        USER: @SHIVANSH01-24
+      </text>
+    </g>
+
+    <!-- Top Right Status Readout -->
+    <g transform="translate(861, 42)">
+      <text text-anchor="end" font-family="'SF Mono', Consolas, 'Fira Code', monospace" font-size="10" font-weight="700" fill="#00f0ff" letter-spacing="1.2">
+        RANK: S+
+      </text>
+      <text y="15" text-anchor="end" font-family="'SF Mono', Consolas, 'Fira Code', monospace" font-size="9" fill="#ff007f" letter-spacing="1">
+        STATUS: ONLINE
+      </text>
+    </g>
+
+    <!-- Bottom Left Telemetry Stats Readout -->
+    <g transform="translate(39, 454)">
+      <text font-family="'SF Mono', Consolas, 'Fira Code', monospace" font-size="9" font-weight="600" fill="#8a99ad" letter-spacing="1">
+        COMMITS: <tspan fill="#ffffff" font-weight="700">1,382</tspan> | STARS: <tspan fill="#ffffff" font-weight="700">594</tspan>
+      </text>
+      <text y="14" font-family="'SF Mono', Consolas, 'Fira Code', monospace" font-size="9" font-weight="600" fill="#8a99ad" letter-spacing="1">
+        PRS: <tspan fill="#ffffff" font-weight="700">166</tspan> | ISSUES: <tspan fill="#ffffff" font-weight="700">79</tspan>
+      </text>
+    </g>
+
+    <!-- Bottom Right Frequency Badge -->
+    <g transform="translate(861, 464)">
+      <text text-anchor="end" font-family="'SF Mono', Consolas, 'Fira Code', monospace" font-size="9" font-weight="600" fill="#00f0ff" letter-spacing="1.5">
+        FREQ: 60Hz // SMIL_KINETIC
+      </text>
+    </g>
+
+  </g>
+
+  <!-- Layer 3: Laser Constellation Beams -->
+  
+  <!-- Laser Constellation Streams Layer -->
+  <g id="lasers-layer">
+    
+    <!-- Plasma Laser Stream to TypeScript -->
+    <g class="laser-stream">
+      <path d="M 450 250 Q 518.47 210.45 586.94 220.89" fill="none" stroke="url(#laser-grad)" stroke-width="1.8" stroke-dasharray="10 20" stroke-opacity="0.85" filter="url(#glow-subtle)">
+        <animate attributeName="stroke-dashoffset" from="30" to="0" dur="1.8s" repeatCount="indefinite" />
+      </path>
+
+      <!-- Contact Energy Spark Node at Satellite Interface -->
+      <circle cx="586.94" cy="220.89" r="3.5" fill="#3178c6" filter="url(#quantum-glow)">
+        <animate attributeName="r" values="3;5.5;3" dur="1.2s" repeatCount="indefinite" />
+        <animate attributeName="fill-opacity" values="0.7;1.0;0.7" dur="1.2s" repeatCount="indefinite" />
+      </circle>
+    </g>
+    <!-- Plasma Laser Stream to Rust -->
+    <g class="laser-stream">
+      <path d="M 450 250 Q 514.81 309.19 579.61 318.38" fill="none" stroke="url(#laser-grad)" stroke-width="1.8" stroke-dasharray="10 20" stroke-opacity="0.85" filter="url(#glow-subtle)">
+        <animate attributeName="stroke-dashoffset" from="30" to="0" dur="2.2s" repeatCount="indefinite" />
+      </path>
+
+      <!-- Contact Energy Spark Node at Satellite Interface -->
+      <circle cx="579.61" cy="318.38" r="3.5" fill="#dea584" filter="url(#quantum-glow)">
+        <animate attributeName="r" values="3;5.5;3" dur="1.2s" repeatCount="indefinite" />
+        <animate attributeName="fill-opacity" values="0.7;1.0;0.7" dur="1.2s" repeatCount="indefinite" />
+      </circle>
+    </g>
+    <!-- Plasma Laser Stream to Python -->
+    <g class="laser-stream">
+      <path d="M 450 250 Q 402.98 310.85 355.96 421.7" fill="none" stroke="url(#laser-grad)" stroke-width="1.8" stroke-dasharray="10 20" stroke-opacity="0.85" filter="url(#glow-subtle)">
+        <animate attributeName="stroke-dashoffset" from="30" to="0" dur="2.6s" repeatCount="indefinite" />
+      </path>
+
+      <!-- Contact Energy Spark Node at Satellite Interface -->
+      <circle cx="355.96" cy="421.7" r="3.5" fill="#3572A5" filter="url(#quantum-glow)">
+        <animate attributeName="r" values="3;5.5;3" dur="1.2s" repeatCount="indefinite" />
+        <animate attributeName="fill-opacity" values="0.7;1.0;0.7" dur="1.2s" repeatCount="indefinite" />
+      </circle>
+    </g>
+    <!-- Plasma Laser Stream to Go -->
+    <g class="laser-stream">
+      <path d="M 450 250 Q 381.53 289.56 313.06 279.11" fill="none" stroke="url(#laser-grad)" stroke-width="1.8" stroke-dasharray="10 20" stroke-opacity="0.85" filter="url(#glow-subtle)">
+        <animate attributeName="stroke-dashoffset" from="30" to="0" dur="1.8s" repeatCount="indefinite" />
+      </path>
+
+      <!-- Contact Energy Spark Node at Satellite Interface -->
+      <circle cx="313.06" cy="279.11" r="3.5" fill="#00ADD8" filter="url(#quantum-glow)">
+        <animate attributeName="r" values="3;5.5;3" dur="1.2s" repeatCount="indefinite" />
+        <animate attributeName="fill-opacity" values="0.7;1.0;0.7" dur="1.2s" repeatCount="indefinite" />
+      </circle>
+    </g>
+    <!-- Plasma Laser Stream to CSS -->
+    <g class="laser-stream">
+      <path d="M 450 250 Q 385.2 190.81 320.39 181.62" fill="none" stroke="url(#laser-grad)" stroke-width="1.8" stroke-dasharray="10 20" stroke-opacity="0.85" filter="url(#glow-subtle)">
+        <animate attributeName="stroke-dashoffset" from="30" to="0" dur="2.2s" repeatCount="indefinite" />
+      </path>
+
+      <!-- Contact Energy Spark Node at Satellite Interface -->
+      <circle cx="320.39" cy="181.62" r="3.5" fill="#563d7c" filter="url(#quantum-glow)">
+        <animate attributeName="r" values="3;5.5;3" dur="1.2s" repeatCount="indefinite" />
+        <animate attributeName="fill-opacity" values="0.7;1.0;0.7" dur="1.2s" repeatCount="indefinite" />
+      </circle>
+    </g>
+  </g>
+
+  <!-- Layer 4: Orbital Satellites & Particles -->
+  
+  <g id="satellites-layer">
+    
+    <g transform="rotate(-12 450 250)">
+      <path id="orbit-path-0" d="M 310 250 A 140 75 0 1 0 590 250 A 140 75 0 1 0 310 250" fill="none" stroke="#00f0ff" stroke-opacity="0.25" stroke-width="1.2" stroke-dasharray="4 8" />
+    </g>
+    <g transform="rotate(-15 450 250)">
+      <path id="orbit-path-1" d="M 235 250 A 215 115 0 1 0 665 250 A 215 115 0 1 0 235 250" fill="none" stroke="#00f0ff" stroke-opacity="0.2" stroke-width="1.2" stroke-dasharray="4 8" />
+    </g>
+    <g transform="rotate(-18 450 250)">
+      <path id="orbit-path-2" d="M 165 250 A 285 155 0 1 0 735 250 A 285 155 0 1 0 165 250" fill="none" stroke="#00f0ff" stroke-opacity="0.15" stroke-width="1.2" stroke-dasharray="4 8" />
+    </g>
+    
+    <circle r="3" fill="#00f0ff" filter="url(#glow-subtle)">
+      <animateMotion dur="18s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear" begin="0s">
+        <mpath href="#orbit-path-0" />
+      </animateMotion>
+    </circle>
+    <circle r="3" fill="#00f0ff" filter="url(#glow-subtle)">
+      <animateMotion dur="18s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear" begin="9s">
+        <mpath href="#orbit-path-0" />
+      </animateMotion>
+    </circle>
+    <circle r="2.5" fill="#ff007f" filter="url(#glow-subtle)">
+      <animateMotion dur="28s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear" begin="0s">
+        <mpath href="#orbit-path-1" />
+      </animateMotion>
+    </circle>
+    <circle r="2.5" fill="#ff007f" filter="url(#glow-subtle)">
+      <animateMotion dur="28s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear" begin="14s">
+        <mpath href="#orbit-path-1" />
+      </animateMotion>
+    </circle>
+    <circle r="2" fill="#00f0ff" filter="url(#glow-subtle)">
+      <animateMotion dur="40s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear" begin="0s">
+        <mpath href="#orbit-path-2" />
+      </animateMotion>
+    </circle>
+    <circle r="2" fill="#00f0ff" filter="url(#glow-subtle)">
+      <animateMotion dur="40s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear" begin="20s">
+        <mpath href="#orbit-path-2" />
+      </animateMotion>
+    </circle>
+    
+    <!-- Satellite Node: TypeScript -->
+    <g class="satellite-node" transform="translate(586.94, 220.89)">
+      <!-- Outer Pulsing Glow Aura -->
+      <circle r="24.47" fill="none" stroke="#3178c6" stroke-opacity="0.4" stroke-width="1.2">
+        <animate attributeName="r" values="22.47;28.47;22.47" dur="3s" repeatCount="indefinite" />
+        <animate attributeName="stroke-opacity" values="0.5;0.1;0.5" dur="3s" repeatCount="indefinite" />
+      </circle>
+
+      <!-- Satellite Main Sphere -->
+      <circle r="18.47" fill="url(#lang-grad-0)" stroke="#3178c6" stroke-width="1.5" filter="url(#glow-subtle)" />
+
+      <!-- Language Abbreviation / Dot Center -->
+      <circle r="6.46" fill="#FFFFFF" fill-opacity="0.9" />
+
+      <!-- Satellite Label Badge -->
+      <g transform="translate(0, 33.47)">
+        <rect x="-35" y="-10" width="70" height="18" rx="4" fill="#090a10" fill-opacity="0.85" stroke="#3178c6" stroke-opacity="0.6" stroke-width="1" />
+        <text y="2" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="700" fill="#ffffff">
+          TypeScript <tspan font-weight="400" fill="#8a99ad">43%</tspan>
+        </text>
+      </g>
+    </g>
+    <!-- Satellite Node: Rust -->
+    <g class="satellite-node" transform="translate(579.61, 318.38)">
+      <!-- Outer Pulsing Glow Aura -->
+      <circle r="21.96" fill="none" stroke="#dea584" stroke-opacity="0.4" stroke-width="1.2">
+        <animate attributeName="r" values="19.96;25.96;19.96" dur="3.8s" repeatCount="indefinite" />
+        <animate attributeName="stroke-opacity" values="0.5;0.1;0.5" dur="3.8s" repeatCount="indefinite" />
+      </circle>
+
+      <!-- Satellite Main Sphere -->
+      <circle r="15.96" fill="url(#lang-grad-1)" stroke="#dea584" stroke-width="1.5" filter="url(#glow-subtle)" />
+
+      <!-- Language Abbreviation / Dot Center -->
+      <circle r="5.59" fill="#FFFFFF" fill-opacity="0.9" />
+
+      <!-- Satellite Label Badge -->
+      <g transform="translate(0, 30.96)">
+        <rect x="-35" y="-10" width="70" height="18" rx="4" fill="#090a10" fill-opacity="0.85" stroke="#dea584" stroke-opacity="0.6" stroke-width="1" />
+        <text y="2" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="700" fill="#ffffff">
+          Rust <tspan font-weight="400" fill="#8a99ad">21%</tspan>
+        </text>
+      </g>
+    </g>
+    <!-- Satellite Node: Python -->
+    <g class="satellite-node" transform="translate(355.96, 421.7)">
+      <!-- Outer Pulsing Glow Aura -->
+      <circle r="21.17" fill="none" stroke="#3572A5" stroke-opacity="0.4" stroke-width="1.2">
+        <animate attributeName="r" values="19.17;25.17;19.17" dur="4.6s" repeatCount="indefinite" />
+        <animate attributeName="stroke-opacity" values="0.5;0.1;0.5" dur="4.6s" repeatCount="indefinite" />
+      </circle>
+
+      <!-- Satellite Main Sphere -->
+      <circle r="15.17" fill="url(#lang-grad-2)" stroke="#3572A5" stroke-width="1.5" filter="url(#glow-subtle)" />
+
+      <!-- Language Abbreviation / Dot Center -->
+      <circle r="5.31" fill="#FFFFFF" fill-opacity="0.9" />
+
+      <!-- Satellite Label Badge -->
+      <g transform="translate(0, 30.17)">
+        <rect x="-35" y="-10" width="70" height="18" rx="4" fill="#090a10" fill-opacity="0.85" stroke="#3572A5" stroke-opacity="0.6" stroke-width="1" />
+        <text y="2" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="700" fill="#ffffff">
+          Python <tspan font-weight="400" fill="#8a99ad">16%</tspan>
+        </text>
+      </g>
+    </g>
+    <!-- Satellite Node: Go -->
+    <g class="satellite-node" transform="translate(313.06, 279.11)">
+      <!-- Outer Pulsing Glow Aura -->
+      <circle r="20.21" fill="none" stroke="#00ADD8" stroke-opacity="0.4" stroke-width="1.2">
+        <animate attributeName="r" values="18.21;24.21;18.21" dur="3s" repeatCount="indefinite" />
+        <animate attributeName="stroke-opacity" values="0.5;0.1;0.5" dur="3s" repeatCount="indefinite" />
+      </circle>
+
+      <!-- Satellite Main Sphere -->
+      <circle r="14.21" fill="url(#lang-grad-3)" stroke="#00ADD8" stroke-width="1.5" filter="url(#glow-subtle)" />
+
+      <!-- Language Abbreviation / Dot Center -->
+      <circle r="4.97" fill="#FFFFFF" fill-opacity="0.9" />
+
+      <!-- Satellite Label Badge -->
+      <g transform="translate(0, 29.21)">
+        <rect x="-35" y="-10" width="70" height="18" rx="4" fill="#090a10" fill-opacity="0.85" stroke="#00ADD8" stroke-opacity="0.6" stroke-width="1" />
+        <text y="2" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="700" fill="#ffffff">
+          Go <tspan font-weight="400" fill="#8a99ad">11%</tspan>
+        </text>
+      </g>
+    </g>
+    <!-- Satellite Node: CSS -->
+    <g class="satellite-node" transform="translate(320.39, 181.62)">
+      <!-- Outer Pulsing Glow Aura -->
+      <circle r="20.15" fill="none" stroke="#563d7c" stroke-opacity="0.4" stroke-width="1.2">
+        <animate attributeName="r" values="18.15;24.15;18.15" dur="3.8s" repeatCount="indefinite" />
+        <animate attributeName="stroke-opacity" values="0.5;0.1;0.5" dur="3.8s" repeatCount="indefinite" />
+      </circle>
+
+      <!-- Satellite Main Sphere -->
+      <circle r="14.15" fill="url(#lang-grad-4)" stroke="#563d7c" stroke-width="1.5" filter="url(#glow-subtle)" />
+
+      <!-- Language Abbreviation / Dot Center -->
+      <circle r="4.95" fill="#FFFFFF" fill-opacity="0.9" />
+
+      <!-- Satellite Label Badge -->
+      <g transform="translate(0, 29.15)">
+        <rect x="-35" y="-10" width="70" height="18" rx="4" fill="#090a10" fill-opacity="0.85" stroke="#563d7c" stroke-opacity="0.6" stroke-width="1" />
+        <text y="2" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="700" fill="#ffffff">
+          CSS <tspan font-weight="400" fill="#8a99ad">10%</tspan>
+        </text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Layer 5: Central Pulsating Quantum Core -->
+  
+  <!-- Central Quantum Core Reactor Group -->
+  <g id="quantum-core" transform="translate(0, 0)">
+
+    <!-- Outer Containment Aura (Pulsing Energy Shield) -->
+    <circle cx="450" cy="250" r="93" fill="url(#reactor-aura-grad)" opacity="0.4">
+      <animate attributeName="r" values="93;113;93" dur="1.2s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.35;0.75;0.35" dur="1.2s" repeatCount="indefinite" />
+    </circle>
+
+    <!-- Concentric Plasma Shield Ring 1 (Clockwise Rotation) -->
+    <circle cx="450" cy="250" r="89" fill="none" stroke="#00f0ff" stroke-opacity="0.6" stroke-width="1.5" stroke-dasharray="8 12 24 12">
+      <animateTransform attributeName="transform" type="rotate" from="0 450 250" to="360 450 250" dur="8s" repeatCount="indefinite" />
+    </circle>
+
+    <!-- Concentric Plasma Shield Ring 2 (Counter-Clockwise Rotation) -->
+    <circle cx="450" cy="250" r="101" fill="none" stroke="#ff007f" stroke-opacity="0.45" stroke-width="1" stroke-dasharray="4 8 16 8">
+      <animateTransform attributeName="transform" type="rotate" from="360 450 250" to="0 450 250" dur="14s" repeatCount="indefinite" />
+    </circle>
+
+    <!-- Outer Secondary Pulse Ripple -->
+    <circle cx="450" cy="250" r="75" fill="none" stroke="#ff007f" stroke-opacity="0.8" stroke-width="1.5">
+      <animate attributeName="r" values="75;108.75;75" dur="1.2s" repeatCount="indefinite" />
+      <animate attributeName="stroke-opacity" values="0.8;0.0;0.8" dur="1.2s" repeatCount="indefinite" />
+    </circle>
+
+    <!-- Core Singularity Primary Orb -->
+    <circle cx="450" cy="250" r="75" fill="url(#reactor-core-grad)" filter="url(#quantum-glow)">
+      <animate attributeName="r" values="75;81;75" dur="1.2s" repeatCount="indefinite" />
+    </circle>
+
+    <!-- Core Inner Nucleus Glow Spot -->
+    <circle cx="450" cy="250" r="30" fill="#FFFFFF" fill-opacity="0.95" filter="url(#glow-subtle)">
+      <animate attributeName="fill-opacity" values="0.8;1.0;0.8" dur="1.2s" repeatCount="indefinite" />
+    </circle>
+
+    <!-- Core Telemetry Metrics Overlay Text -->
+    <g transform="translate(450, 250)">
+      <text y="-4" text-anchor="middle" font-family="'SF Mono', Consolas, monospace" font-size="24" font-weight="800" fill="#FFFFFF" letter-spacing="1">
+        100.0
+      </text>
+      <text y="14" text-anchor="middle" font-family="'SF Mono', Consolas, monospace" font-size="8" font-weight="600" fill="#ff007f" letter-spacing="1.5" opacity="0.9">
+        SCORE
+      </text>
+    </g>
+
+  </g>
+</svg>
