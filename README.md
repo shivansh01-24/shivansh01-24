@@ -200,6 +200,14 @@ class ShivanshSrivastava:
 
 <img src="https://github-readme-streak-stats.herokuapp.com/?user=shivansh01-24&theme=tokyonight&hide_border=true&background=0d1117&ring=A855F7&fire=FF6B6B&currStreakLabel=A855F7" width="500"/>
 
+<br/><br/>
+
+### 🏆 GitHub Profile Trophies & Achievements Showcase
+
+<a href="https://github.com/shivansh01-24?tab=achievements" target="_blank">
+  <img src="https://github-profile-trophy.vercel.app/?username=shivansh01-24&theme=tokyonight&no-frame=true&no-bg=true&margin-w=4" alt="Shivansh's GitHub Trophies" />
+</a>
+
 ---
 
 ### 🐍 Contribution Snake Eater
